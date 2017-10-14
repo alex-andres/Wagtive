@@ -1,4 +1,11 @@
 $(document).ready(function() {
+    
+    $("#infoTooltip").hover(function () {
+        $('[data-toggle="tooltip"]').tooltip("show")
+    },
+    function () {
+        $('[data-toggle="tooltip"]').tooltip("hide")
+    })
 
     firebase.auth().onAuthStateChanged(user => {
         // CHECK IF USER IS SIGNED IN

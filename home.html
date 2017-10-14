@@ -36,6 +36,7 @@
 	<script type="text/javascript" src="assets/js/authentication.js"></script>
 	<script type="text/javascript" src="assets/js/home.js"></script>
 	<script type="text/javascript" src="assets/js/LoadingBar/LoadingBar.js"></script>
+	<script type="text/javascript" src="assets/js/check-ins.js"></script>
 </head>
 <div class="modal" id="checkInModal">
 	<div class="modal-dialog modal-lg" role="document">
@@ -44,20 +45,9 @@
 				<span>Check in</span>
 				<small>Each check in is worth 100 ponts</small>
 			</div>
-			<div class="modal-body">
-				<div class="row align-items-center justify-content-around">
-					<div class="col-2 pr-0">
-						<img class="checkInImage" src="https://s3-media2.fl.yelpcdn.com/bphoto/gRUy9HazWef2Yjgz2-6k5A/180s.jpg" alt="">
-					</div>
-					<div class="col-8">
-						<span class="font-weight-bold">Village Pet Supply</span><br>	
-						<span class="py-0">4838 Laurel Canyon Blvd, Los Angeles, CA 91607</span><br>
-						<span>Rating</span>
-					</div>
-					<div class="col-2">
-						<button class="btn btn-outline-secondary">Check in</button>
-					</div>
-				</div>
+			<div class="modal-body" id="check-ins-modal">
+			
+
 			</div>
 			<div class="modal-footer">
 				<h5></h5>
@@ -86,9 +76,7 @@
 									Activities
 								</a>
 								<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-									<a class="dropdown-item" href="#">Walking/Running</a>
-									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="#">Check-ins</a>
+									<a class="dropdown-item" href="walk-run.html">Walking/Running</a>
 									<div class="dropdown-divider"></div>
 									<a class="dropdown-item" href="#">Meet-ups</a>
 									<div class="dropdown-divider"></div>
@@ -140,7 +128,9 @@
 								</div>
 							</div>
 							<div class="col-4 d-flex align-items-center justify-content-start">
-								<button id="startActivity" class="btn btn-outline-primary">Start Activity</button>
+								<a href="walk-run.html">
+									<button id="startActivity" class="btn btn-outline-primary">Start Activity</button>
+								</a>
 							</div>
 						</div>
 					</div>
@@ -151,22 +141,12 @@
 						<h2>Latest Activities</h2>
 						<hr>
 						<div class="row">
-							<div class="col-6">
+							<div class="col-5">
 								<h4>Recent Check-ins</h4>
 								<hr>
-<!-- 								<table class="table table-hover">
-								<thead>
-									<tr>
-										<th>Date</th>
-										<th>Location</th>
-										<th>Points</th>
-									</tr>
-								</thead>
-								<tbody id='checkins'>
-								</tbody>
-						</table> -->
+								<img src="assets/images/pawmap.png" id="pawmap" alt="">
 							</div>
-							<div class="col-6">
+							<div class="col-7">
 								<h4>Recent Activites</h4>
 								<hr>
 								<table class="table table-hover">
