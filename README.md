@@ -1,6 +1,6 @@
 # Wagtive
 Wagtive is a web app that gamifies fitness and social activity for dog owners. The goal is to provide a range of activities including mile tracking, suggested actvities (hiking trails, pet-friendly places), challenges, and more. The user can progress through various levels, the lowest being a puppy, the highest an alpha dog. With each accomplishment the user earns badges and varying point amounts. The goal is to get active with Wagtive!
-![Wagtive Logo](https://drive.google.com/open?id=0B2hEDGYBFTbRb2ZJLXNSNTRNRlU "Get active with Wagtive!")
+![Wagtive Logo](https://files.slack.com/files-pri/T67BZGM6H-F7LRV9B7A/wagtivelogo.png "Get active with Wagtive!")
 
 ### Wagtive Levels
 * Puppy  - 0 to 1,000 points
