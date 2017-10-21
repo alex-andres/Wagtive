@@ -66,14 +66,16 @@ $(document).ready(function() {
 
                 $('#profileImage').attr('src', user.photoURL);
 
-                // db.ref('users/' + uid + '/checkins').push(
-                //         {
-                //             date: '10/13/17',
-                //             activityType: "Check-In",
-                //             location: 'PetSmart' ,
-                //             points: 100,
-                //             distance: ""
-                //         })
+
+                    // db.ref('users/' + uid + '/activities').push(
+                    //     {
+                    //         date: '09/20/17',
+                    //         activityType: "Check-In",
+                    //         location: 'Healthy Spot' ,
+                    //         points: 100,
+                    //         distance: ""
+                    //     })
+
 
                 var activityRef = db.ref('users/' + uid + '/activities');
 

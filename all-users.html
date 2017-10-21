@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Leaderboard</title>
+	<title>Users</title>
 	<link rel="stylesheet" href="assets/css/reset.css">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:500, 900" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -31,38 +31,10 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="assets/js/app.js"></script>
-	<script type="text/javascript" src="assets/js/leaderboard.js"></script>
+	<script type="text/javascript" src="assets/js/allUsers.js"></script>
 	<script type="text/javascript" src="assets/js/authentication.js"></script>
 	<script type="text/javascript" src="assets/js/index.js"></script>
 </head>
-<div class="modal" id="checkInModal">
-	<div class="modal-dialog modal-lg" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<span>Check in</span>
-				<small>Each check in is worth 100 ponts</small>
-			</div>
-			<div class="modal-body">
-				<div class="row align-items-center justify-content-around">
-					<div class="col-2 pr-0">
-						<img class="checkInImage" src="https://s3-media2.fl.yelpcdn.com/bphoto/gRUy9HazWef2Yjgz2-6k5A/180s.jpg" alt="">
-					</div>
-					<div class="col-8">
-						<span class="font-weight-bold">Village Pet Supply</span><br>	
-						<span class="py-0">4838 Laurel Canyon Blvd, Los Angeles, CA 91607</span><br>
-						<span>Rating</span>
-					</div>
-					<div class="col-2">
-						<button class="btn btn-outline-secondary">Check in</button>
-					</div>
-				</div>
-			</div>
-			<div class="modal-footer">
-				<h5></h5>
-			</div>
-		</div>
-	</div>
-</div>
 <body>
 	<div class="container-fluid">
 		<div class="row align-items-center justify-content-center" id="lnavMenu">
@@ -79,20 +51,8 @@
 							<li class="nav-item">
 								<a class="nav-link" href="#">Leaderboard</a>
 							</li>
-							<li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle" href="activities.html" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									Activities
-								</a>
-								<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-									<a class="dropdown-item" href="walk-run.html">Walking/Running</a>
-									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="#">Meet-ups</a>
-									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="#">Challenges</a>
-								</div>
-							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="activities.html" data-toggle="modal" data-target="#checkInModal">Check in</a>
+								<a class="nav-link" href="activities.html">Activities</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="profile.html">Profile</a>
@@ -123,34 +83,9 @@
 
 		<div class="row justify-content-center" id="mainContainer">
 			<div class="col-8">
-				<div class="row justify-content-center" id="leaderboardTable">
+				<div class="row justify-content-center" id="allUsers">
 
-					<!-- table beginning -->
 
-					<table class = "table table-striped">
-						<thead>
-							<tr class="tableText" >
-								<th class="text-center" scope="col">Name</th>
-								<th class="text-center" scope="col">Level</th>
-								<th class="text-center" scope="col">Points</th>
-							</tr>
-						</thead>
-
-						<!-- end of table-head -->
-						
-						<tbody id="LeaderboardInformation">
-							<tr>
-								<!-- Name -->
-								<!-- Level -->
-								<!-- Points -->
-							</tr>
-						</tbody>
-
-						<!-- End of t-body -->
-
-					</table>
-
-					<!-- table end -->
 
 				</div>
 			</div>

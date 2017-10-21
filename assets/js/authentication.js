@@ -43,7 +43,7 @@ $(document).ready(function() {
                     hTown: hTown,
                     petName: petName,
                     points: 300,
-                    level: 'puppy',
+                    level: 'Puppy',
                     activities: 0,
                 });
 
@@ -78,6 +78,5 @@ $(document).ready(function() {
 
     $("#logout").on("click", e => {
         auth.signOut();
-        location.replace('index.html')
     })
 })

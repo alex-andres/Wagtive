@@ -6,7 +6,7 @@ $(document).ready(function() {
             // CHECK IF USER IS SIGNED IN
             if (user.emailVerified) {
                 // CHECK IF SIGNED IN USERS EMAIL IS VERIFIED
-                location.replace('home.html');
+                // location.replace('home.html');
             } else {
                 $('#emailVerificationModal').toggle();
                 $('#closeEmailModal').on('click', function() {
