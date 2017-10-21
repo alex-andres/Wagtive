@@ -66,14 +66,56 @@ $(document).ready(function() {
 
                 $('#profileImage').attr('src', user.photoURL);
 
-                // db.ref('users/' + uid + '/checkins').push(
-                //         {
-                //             date: '10/13/17',
-                //             activityType: "Check-In",
-                //             location: 'PetSmart' ,
-                //             points: 100,
-                //             distance: ""
-                //         })
+
+                    // db.ref('users/' + uid + '/activities').push(
+                    //     {
+                    //         date: '09/20/17',
+                    //         activityType: "Check-In",
+                    //         location: 'Healthy Spot' ,
+                    //         points: 100,
+                    //         distance: ""
+                    //     })
+
+                    // db.ref('users/' + uid + '/checkins').push(
+                    //     {
+                    //         date: '09/20/17',
+                    //         activityType: "Check-In",
+                    //         location: 'Healthy Spot' ,
+                    //         points: 100,
+                    //         distance: ""
+                    //     })
+
+
+
+                    // db.ref('users/' + uid + '/activities').push(
+                    //     {
+                    //         date: '10/17/17',
+                    //         activityType: "Walking",
+                    //         location: 'Los Angeles' ,
+                    //         points: 83,
+                    //         distance: "3.3 mi"
+                    //     })
+
+                    // db.ref('users/' + uid + '/activities').push(
+                    //     {
+                    //         date: '09/09/17',
+                    //         activityType: "Walking",
+                    //         location: 'Santa Monica' ,
+                    //         points: 57.5,
+                    //         distance: "2.3 mi"
+                    //     })
+
+                    // db.ref('users/' + uid + '/activities').push(
+                    //     {
+                    //         date: '9/01/17',
+                    //         activityType: "Running",
+                    //         location: 'Venica' ,
+                    //         points: 45,
+                    //         distance: "1.8 mi"
+                    //     })
+
+
+
 
                 var activityRef = db.ref('users/' + uid + '/activities');
 
