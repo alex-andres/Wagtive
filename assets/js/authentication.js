@@ -43,7 +43,7 @@ $(document).ready(function() {
                     hTown: hTown,
                     petName: petName,
                     points: 300,
-                    level: 'puppy',
+                    level: 'Puppy',
                     activities: 0,
                 });
 
