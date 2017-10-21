@@ -4,15 +4,18 @@ var path = "";
 var coordArray = [];
 var trackBol;
 var interval;
-var coordMinusArray = [];
 var outputDiv = document.getElementById('output');
-var distance;
-var totalDistance;
+var distance = 0;
+var totalDistance = 0;
+var lat1 = 0;
+var lng1 = 0;
+var lat2 = 0;
+var lng2 = 0;
 
 function initMap() {
 	map = new google.maps.Map(document.getElementById('map'), {
 		center: { lat: 34.052235, lng: -118.243683 },
-		zoom: 9
+		zoom: 13
 	});
 	infoWindow = new google.maps.InfoWindow;
 
@@ -23,24 +26,64 @@ function initMap() {
 				position.coords.longitude)
 		);
 	};
-
+	/*computes current location, pushes the coordinates to an array for future drawing use, 
+	stores the newest coordinates in initial variable, when next coordinates are calculated stores previous coordinates in lat2 lng2,
+	stores newest coordinates in lat1 lng1.
+	*/
 	function showLocation(position) {
-		var i = 0;
 		var lat = position.coords.latitude;
 		var lng = position.coords.longitude;
-		var coords = { lat: lat, lng: lng };
-		coordArray.push(coords);
-
 		setMarkerPosition(marker, position);
-		console.log(lat);
-		console.log(lng);
-		console.log(coordArray);
-
-		$("#output").html(coords);
-		i++;
-		if (coordArray.length > 1) {
-			distanceCalc();
+		storeNewCoord(lat, lng);
+		if (lat1 === 0){
+			lat1 = parseFloat(lat);
+			lng1 = parseFloat(lng);
 		}
+		else {
+			lat2 = parseFloat(lat1);
+			lng2 = parseFloat(lng1);
+			lat1 = parseFloat(lat);
+			lng1 = parseFloat(lng);
+			console.log(lat1, lng1, lat2, lng2)
+			getDistanceFromLatLon(lat1, lng1, lat2, lng2);
+
+			var PathStyle = new google.maps.Polyline({
+			  path: coordArray,
+			  strokeColor: "#FF0000",
+			  strokeOpacity: 1.0,
+			  strokeWeight: 2
+			});
+
+			PathStyle.setMap(map);
+		}
+
+	};
+
+	//function that will allow us to draw lines with previous coordinates
+	function storeNewCoord(lat, lng) {
+		var coord = "new google.maps.LatLng(" + lat.toString() + ", " + lng.toString() + ")";
+		coordArray.push(coord);
+	};
+
+	//function that calculates distance using great circle method (arc instead of flat line)
+	function getDistanceFromLatLon(lat1,lon1,lat2,lon2) {
+	  var R = 3959; // Radius of the earth in miles
+	  var dLat = deg2rad(lat2-lat1);  // deg2rad below
+	  var dLon = deg2rad(lon2-lon1); 
+	  var a = 
+	    Math.sin(dLat/2) * Math.sin(dLat/2) +
+	    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+	    Math.sin(dLon/2) * Math.sin(dLon/2)
+	    ; 
+	  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+	  var d = R * c; // Distance in miles
+	  distance += d;
+	  totalDistance = distance.toFixed(2);
+	  $("#distanceOutput").html("<h4>" + totalDistance + "</h4>");
+	};
+	//function that converts degs to radians
+	function deg2rad(deg) {
+	  return deg * (Math.PI/180)
 	};
 
 	function errorHandler(err) {
@@ -50,6 +93,12 @@ function initMap() {
 			alert("Error: Position is unavailable!");
 		}
 	};
+	var PathStyle = new google.maps.Polyline({
+    path: coordArray,
+    strokeColor: "#FF0000",
+    strokeOpacity: 1.0,
+    strokeWeight: 2
+  });
 
 	$("#start").on("click", function(e) {
 		e.preventDefault();
@@ -99,50 +148,14 @@ function initMap() {
 			handleLocationError(true, infoWindow, map.getCenter());
 		}
 	});
+
 	$("#stop").on("click", function(e) {
 		e.preventDefault();
 		trackBol = true;
 	});
-	var geocoder = new google.maps.Geocoder;
 
 
-	function distanceCalc() {
-		var i = 1;
-		// var distance = results[j].distance.text;
-		var service = new google.maps.DistanceMatrixService;
-		service.getDistanceMatrix({
-			origins: [coordArray[i - 1]],
-			destinations: [coordArray[i]],
-			travelMode: 'WALKING',
-			unitSystem: google.maps.UnitSystem.IMPERIAL,
-			avoidHighways: true,
-			avoidTolls: true,
-		}, function(response, status) {
-			if (status !== 'OK') {
-				alert('Error was: ' + status);
-			} else {
-				var originList = response.originAddresses;
-				var destinationList = response.destinationAddresses;
-				outputDiv = document.getElementById('output');
-				outputDiv.innerHTML = '';
 
-
-				for (var i = 0; i < originList.length; i++) {
-					var results = response.rows[i].elements;
-					geocoder.geocode({ 'address': originList[i] }, );
-					for (var j = 0; j < results.length; j++) {
-						geocoder.geocode({ 'address': destinationList[j] }, );
-						distance = results[j].distance
-						console.log(distance.value);
-					};
-					console.log(distance);
-					distance += distance;
-				}
-			}
-			console.log(distance);
-		});
-		i++;
-	};
 };
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
