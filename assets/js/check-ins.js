@@ -5,30 +5,25 @@ $(function() {
 	var latt = 0;
 	var bolLoaded = false;
 
-	function getLocation() {
+	$("#checkInButton").on("click", function(event) {
+		if (!bolLoaded) {
+
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(success);
+			}
+
+			else { 
+				console.log("Geolocation is not supported by this browser.");
+			}
+
+			function success (position) {
+				long = position.coords.longitude;
+				latt = position.coords.latitude;
+				console.log(long);
+				console.log(latt);
+	
+			
 		
-		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(show_response_based_position);
-		} 
-
-		else { 
-			console.log("Geolocation is not supported by this browser.");
-		}
-	}
-
-	getLocation();
-
-	function show_response_based_position(position) {
-		long = position.coords.longitude;
-		latt = position.coords.latitude;
-		console.log(long);
-		console.log(latt);
-	};
-
-		$("#checkInButton").on("click", function(event) {
-			
-			if (!bolLoaded) {
-			
 				$.ajax({
 					url: `http://45.77.119.239:3002/?latitude=${latt}&longitude=${long}`,
 					method: 'GET',
@@ -66,5 +61,6 @@ $(function() {
 					bolLoaded = true;
 				})
 			}
-		})
+		};
+	})
 });
