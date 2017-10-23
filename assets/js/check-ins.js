@@ -6,24 +6,38 @@ $(function() {
 	var bolLoaded = false;
 
 	$("#checkInButton").on("click", function(event) {
+
 		if (!bolLoaded) {
 
 			if (navigator.geolocation) {
-				navigator.geolocation.getCurrentPosition(success);
+				navigator.geolocation.getCurrentPosition(success,error);
 			}
 
 			else { 
-				console.log("Geolocation is not supported by this browser.");
+				$("#check-ins-modal").html("<span>Geolocation is not supported by this browser.</span>");
+			}
+
+			function error (e) {
+				switch(error.code) {
+					case error.PERMISSION_DENIED:
+						$("#check-ins-modal").html("<span>You denied the request for Geolocation, please refresh the page.</span>");
+						break;
+					case error.POSITION_UNAVAILABLE:
+						$("#check-ins-modal").html("<span>Your location information is unavailable.</span>");
+						break;
+					case error.TIMEOUT:
+						$("#check-ins-modal").html("<span>The request to get your location timed out.</span>");
+						break;
+					case error.UNKNOWN_ERROR:
+						$("#check-ins-modal").html("<span>An unknown error occurred.</span>");
+						break;
+				}
 			}
 
 			function success (position) {
 				long = position.coords.longitude;
 				latt = position.coords.latitude;
-				console.log(long);
-				console.log(latt);
-	
-			
-		
+
 				$.ajax({
 					url: `http://45.77.119.239:3002/?latitude=${latt}&longitude=${long}`,
 					method: 'GET',
@@ -34,8 +48,8 @@ $(function() {
 				})
 				.done(function (response) {
 
-					console.log(response);
-					
+					$("#check-ins-modal").html("");
+
 					for (var i = 0; i < 7; i++) {
 						var div1=$('<div>').addClass("col-2 pr-0");
 						var div2=$('<div>').addClass("col-8");
