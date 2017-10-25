@@ -187,3 +187,9 @@ h4 {
 	height: 400px;
 	width: 100%;
 }
+.profPic{
+	max-width: 100px;
+}
+.profIcon {
+	margin: 2%;
+}

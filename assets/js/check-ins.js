@@ -1,71 +1,80 @@
 
+$(function() {
 
-getLocation();
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(show_response_based_position);
+	var long = 0;
+	var latt = 0;
+	var bolLoaded = false;
 
-    } else { 
-        console.log("Geolocation is not supported by this browser.");
-    }
-}
+	$("#checkInButton").on("click", function(event) {
 
-function show_response_based_position(position) {
-    /*x.innerHTML = "Latitude: " + position.coords.latitude + 
-    "<br>Longitude: " + position.coords.longitude; */
-    console.log(position.coords.latitude);
-    console.log(position.coords.longitude);
+		if (!bolLoaded) {
 
-    $(function() {
-        $.ajax({
-          url: 'assets/php/yelp.php',
-          data: {
-            long: position.coords.longitude,
-            latt: position.coords.latitude
-          }, 
-          success: function (response) {
-            console.log(response)
-            for (var i = 0; i < 7; i++) {
-              
-              var div1=$('<div>').addClass("col-2 pr-0");
-              var div2=$('<div>').addClass("col-8");
-              var div3=$('<div>').addClass("col-2");
-              var result_img=$('<img>').addClass("checkInImage").attr("src",response.businesses[i].image_url);
-              div1.append(result_img);
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(success,error);
+			}
 
-              var inf1=$('<span>').addClass("font-weight-bold").after("<br>");
-              var inf2=$('<span>').addClass("py-0").html("<br>");
-              var inf3=$('<span>').prepend("<br>");
+			else { 
+				$("#check-ins-modal").html("<span>Geolocation is not supported by this browser.</span>");
+			}
 
-              inf1.append(response.businesses[i].name);
-              inf2.append(response.businesses[i].location.display_address[0]+" "+response.businesses[i].location.display_address[1]);
-              //inf3.html(" Rating: ");
-              inf3.append(" Rating: "+response.businesses[i].rating);
-              console.log(response.businesses[i].rating);
-              console.log(inf3);
-              div2.append(inf1).append(inf2).append(inf3);
+			function error (e) {
+				switch(error.code) {
+					case error.PERMISSION_DENIED:
+						$("#check-ins-modal").html("<span>You denied the request for Geolocation, please refresh the page.</span>");
+						break;
+					case error.POSITION_UNAVAILABLE:
+						$("#check-ins-modal").html("<span>Your location information is unavailable.</span>");
+						break;
+					case error.TIMEOUT:
+						$("#check-ins-modal").html("<span>The request to get your location timed out.</span>");
+						break;
+					case error.UNKNOWN_ERROR:
+						$("#check-ins-modal").html("<span>An unknown error occurred.</span>");
+						break;
+				}
+			}
 
-              var btn=$("<button>").addClass("btn btn-outline-secondary").text("Check in");
+			function success (position) {
+				long = position.coords.longitude;
+				latt = position.coords.latitude;
 
-              div3.append(btn);
+				$.ajax({
+					url: `http://45.77.119.239:3002/?latitude=${latt}&longitude=${long}`,
+					method: 'GET',
+					data: {
+						long,
+						latt
+					}
+				})
+				.done(function (response) {
 
-              var result_container_div=$("<div>").addClass("row align-items-center justify-content-around")
-              .css("margin-bottom","20px");
+					$("#check-ins-modal").html("");
 
-              result_container_div.append(div1).append(div2).append(div3);
-              $("#check-ins-modal").append(result_container_div);
+					for (var i = 0; i < 7; i++) {
+						var div1=$('<div>').addClass("col-2 pr-0");
+						var div2=$('<div>').addClass("col-8");
+						var div3=$('<div>').addClass("col-2");
+						var result_img=$('<img>').addClass("checkInImage").attr("src",response.businesses[i].image_url);
+						div1.append(result_img);
+						var inf1=$('<span>').addClass("font-weight-bold").after("<br>");
+						var inf2=$('<span>').addClass("py-0").html("<br>");
+						var inf3=$('<span>').prepend("<br>");
+						inf1.append(response.businesses[i].name);
+						inf2.append(response.businesses[i].location.display_address[0]+" "+response.businesses[i].location.display_address[1]);
+						inf3.append(" Rating: "+response.businesses[i].rating);
+						console.log(response.businesses[i].rating);
+						console.log(inf3);
+						div2.append(inf1).append(inf2).append(inf3);
+						var btn=$("<button>").addClass("btn btn-outline-secondary").text("Check in");
+						div3.append(btn);
+						var result_container_div=$("<div>").addClass("row align-items-center justify-content-around").css("margin-bottom","20px");
+						result_container_div.append(div1).append(div2).append(div3);
+						$("#check-ins-modal").append(result_container_div);
+					}
 
-            }
-
-            
-
-
-          },
-          dataType: 'json'
-        });
-    });
-
-
-
-}
-
+					bolLoaded = true;
+				})
+			}
+		};
+	})
+});
