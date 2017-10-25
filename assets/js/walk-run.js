@@ -1,3 +1,4 @@
+console.log("walk-run.js is loaded!");
 var map, infoWindow;
 var marker;
 var path = "";
@@ -14,6 +15,7 @@ var lng2 = 0;
 
 function initMap() {
 	map = new google.maps.Map(document.getElementById('map'), {
+		//center: { lat: 34, lng: -118 },
 		center: { lat: 34.052235, lng: -118.243683 },
 		zoom: 13
 	});
@@ -99,55 +101,95 @@ function initMap() {
     strokeOpacity: 1.0,
     strokeWeight: 2
   });
-//-------------------  Start/Stop button  [START]-------------------
-	$("#btn_start").on("click", function(e)
-	{
-		e.preventDefault();
-		// -------------- Timer code [START] ---------------------------------
+
+// -------------- Timer code [START] ---------------------------------
+		//----- test [START]---
+
+
+
+		//----- test [STOP]---
+
+
 		var timer = new Timer();
-		$('#txt_Timer .startButton').click(function () {
-			timer.start();
-			//timer.start({countdown: true, startValues: {seconds: g}});
+		$('#startButton').click(function () {
+
+			var state = $(this).attr("data-status");
+			//Start the time.
+			if(state == 'inactive' ){
+				console.log("Data status: " , state);
+				console.log("you clicked the start button!");
+				//set the data status to start
+				//Change start button to pause
+				//Start the timer
+				//start google maps
+				$('#startButton').text('Pause');
+				timer.start();
+				//Don't need to start Google Maps 2x??????????? for paused.
+				googleMaps();
+				console.log("Data status: " , state);
+				$(this).attr("data-status",'start');
+
+			}
+			//Restarting from paused state
+			if(state == 'paused' ) {
+				console.log("Data status: ", state);
+				console.log("you clicked the start button!");
+				$('#startButton').text('Pause');
+				timer.start();
+				//Don't need to start Google Maps 2x??????????? for paused.
+				console.log("Data status: ", state);
+				$(this).attr("data-status", 'start');
+			}
+			//Pause the time
+			if(state == 'start'){
+				console.log("Data status is: " , state);
+				timer.pause();
+				$('#startButton').text('Start');
+				//set the data status to stop
+				//Start the timer
+				$(this).attr("data-status",'paused');
+
+			}
+			//Resume the time
+			if(state == 'pause'){
+				console.log("Data status is: " , state);
+
+			}
+
 		});
-		$('#txt_Timer .pauseButton').click(function () {
-			timer.pause();
-		});
-		$('#txt_Timer .stopButton').click(function () {
+
+
+		$('#stopButton').click(function () {
+			console.log("you clicked the stop button!");
 			timer.stop();
 		});
-		/*$('#chronoExample .resetButton').click(function () {
-		 timer.reset();
-		 });*/
+
+		$('#txt_Timer .test_pauseButton').click(function () {
+			timer.pause();
+		});
+
+		$('#txt_Timer .test_resetButton').click(function () {
+			 timer.reset();
+		 });
 
 		timer.addEventListener('secondsUpdated', function (e) {
-			$('#txt_Timer .values').html(timer.getTimeValues().toString());
+			$('#txt_Timer .timerValues').html(timer.getTimeValues().toString());
 		});
 		timer.addEventListener('started', function (e) {
-			$('#txt_Timer .values').html(timer.getTimeValues().toString());
+			$('#txt_Timer .timerValues').html(timer.getTimeValues().toString());
 		});
 		timer.addEventListener('reset', function (e) {
-			$('#txt_Timer .values').html(timer.getTimeValues().toString());
+			$('#txt_Timer .timerValues').html(timer.getTimeValues().toString());
 		});
 
 		/*timer.addEventListener('targetAchieved', function (e) {
 		 console.log("THE EVENT IS COMPLETE!!!!!!!");
 		 });*/
+// -------------- Timer code [STOP]---------------------------------
 
-		//FROM html
-		/*
-		 <div id="chronoExample">
-		 <div class="values">00:00:00</div>
-		 <div>
-		 <button class="startButton">Start</button>
-		 <button class="pauseButton" >Pause</button>
-		 <button class="stopButton">Stop</button>
-		 <button class="resetButton">Reset</button>
-		 </div>
-		 </div>
-		 */
-		// -------------- Timer code [STOP]---------------------------------]
 
 		//-------------- Google Map code [START] ---------------------------
+	function googleMaps(){
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(function(position) {
 				var pos = {
@@ -174,7 +216,10 @@ function initMap() {
 			// Browser doesn't support Geolocation
 			handleLocationError(true, infoWindow, map.getCenter());
 		}
-	});
+
+	}
+
+
 	//-------------- Google Map code [STOP] ---------------------------
 
 	/*$("#stop").on("click", function(e) {
