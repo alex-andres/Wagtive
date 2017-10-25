@@ -38,14 +38,7 @@ $(function() {
 				long = position.coords.longitude;
 				latt = position.coords.latitude;
 
-				$.ajax({
-					url: `http://45.77.119.239:3002/?latitude=${latt}&longitude=${long}`,
-					method: 'GET',
-					data: {
-						long,
-						latt
-					}
-				})
+				$.getJSON(`http://45.77.119.239:3002/?latitude=${latt}&longitude=${long}`,{method: "GET"})
 				.done(function (response) {
 
 					$("#check-ins-modal").html("");
