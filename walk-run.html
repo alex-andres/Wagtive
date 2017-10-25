@@ -35,6 +35,7 @@
 	<script type="text/javascript" src="assets/js/walk-run.js"></script>
 	<script type="text/javascript" src="assets/js/authentication.js"></script>
 	<script type="text/javascript" src="assets/js/index.js"></script>
+	<script type="text/javascript" src="assets/js/easytimer.min.js"></script>
 
 </head>
 <div class="modal" id="checkInModal">
@@ -113,10 +114,11 @@
 				</nav>
 			</div>
 		</div>
+		<!-- TIMER INFORMATION [START]------------------------------->
 		<div class="row justify-content-start" style="line-height: 5px">
 			<div class="col-2"></div>
 			<div class="col-2 text-center">
-				<h4 class="timer">00:00</h4><br>
+				<h4 id="txt_Timer" class="timer">00:00</h4><br>
 				<span>Time</span>
 			</div>
 			<div class="col-2 text-center">
@@ -128,24 +130,27 @@
 				<span>mi/min</span>
 			</div>
 		</div>
+		<!-- TIMER INFORMATION [END]---------------------------------->
 		<div class="row mt-3 justify-content-center" id="taller">
 			<div id="map" class="col-6">
 			</div>
-		<div class="row justify-content-center">
-			<div class="col-6">
-			<button id="start" class="btn btn-custom px-5 mt-3" type="submit">Start</button>
-			<button id="stop" class="btn btn-custom px-5 mt-3" type="submit">Stop</button>
+		<!-- START/STOP BUTTONS [START] --------------------------------------->
+			<div class="row justify-content-center">
+				<div class="col-6">
+				<button id="btn_start" class="btn btn-custom px-5 mt-3 startButton" type="submit">Start</button>
+				<button id="bt_stop" class="btn btn-custom px-5 mt-3 stopButton" type="submit">Stop</button>
+				</div>
+				<div id="output">
+
+				</div>
+				<div id="distance">
+
+				</div>
+				<div id="totalDistance">
+
+				</div>
 			</div>
-			<div id="output">
-				
-			</div>
-			<div id="distance">
-				
-			</div>
-			<div id="totalDistance">
-				
-			</div>
-		</div>
+			<!-- START/STOP BUTTONS [END] --------------------------------------->
 		</div>	
 	</div>
 	<script async defer 

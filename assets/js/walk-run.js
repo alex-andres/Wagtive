@@ -99,28 +99,55 @@ function initMap() {
     strokeOpacity: 1.0,
     strokeWeight: 2
   });
-
-	$("#start").on("click", function(e) {
+//-------------------  Start/Stop button  [START]-------------------
+	$("#btn_start").on("click", function(e)
+	{
 		e.preventDefault();
-		var sec1 = 0;
-		var sec2 = 0;
-		var min = 0;
-		var timer = setInterval(function(){
-			sec1++;
-			if (sec1 < 10) {
-				$(".timer").html(`0${min}:${sec2}${sec1}`);
-			}
-			else if (sec1 === 10) {
-				sec2++;
-				sec1 = 0;
-				if (sec2 < 6) {$(".timer").html(`0${min}:${sec2}${sec1}`)}
-				else if (sec2 >= 6) {
-					sec2 = 0;
-					min++;
-					$(".timer").html(`0${min}:${sec2}${sec1}`)
-				}
-			}
-		}, 1000);
+		// -------------- Timer code [START] ---------------------------------
+		var timer = new Timer();
+		$('#txt_Timer .startButton').click(function () {
+			timer.start();
+			//timer.start({countdown: true, startValues: {seconds: g}});
+		});
+		$('#txt_Timer .pauseButton').click(function () {
+			timer.pause();
+		});
+		$('#txt_Timer .stopButton').click(function () {
+			timer.stop();
+		});
+		/*$('#chronoExample .resetButton').click(function () {
+		 timer.reset();
+		 });*/
+
+		timer.addEventListener('secondsUpdated', function (e) {
+			$('#txt_Timer .values').html(timer.getTimeValues().toString());
+		});
+		timer.addEventListener('started', function (e) {
+			$('#txt_Timer .values').html(timer.getTimeValues().toString());
+		});
+		timer.addEventListener('reset', function (e) {
+			$('#txt_Timer .values').html(timer.getTimeValues().toString());
+		});
+
+		/*timer.addEventListener('targetAchieved', function (e) {
+		 console.log("THE EVENT IS COMPLETE!!!!!!!");
+		 });*/
+
+		//FROM html
+		/*
+		 <div id="chronoExample">
+		 <div class="values">00:00:00</div>
+		 <div>
+		 <button class="startButton">Start</button>
+		 <button class="pauseButton" >Pause</button>
+		 <button class="stopButton">Stop</button>
+		 <button class="resetButton">Reset</button>
+		 </div>
+		 </div>
+		 */
+		// -------------- Timer code [STOP]---------------------------------]
+
+		//-------------- Google Map code [START] ---------------------------
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(function(position) {
 				var pos = {
@@ -148,15 +175,16 @@ function initMap() {
 			handleLocationError(true, infoWindow, map.getCenter());
 		}
 	});
+	//-------------- Google Map code [STOP] ---------------------------
 
-	$("#stop").on("click", function(e) {
+	/*$("#stop").on("click", function(e) {
 		e.preventDefault();
 		trackBol = true;
-	});
+	});*/
 
 
 
-};
+};//-------------------  Start/Stop button  [END]-------------------
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 	infoWindow.setPosition(pos);
