@@ -157,7 +157,7 @@ h4 {
 
 #lnavMenu {
 	background-color: #0D90E6;
-	height: 50px;
+	width: 100%;
 }
 
 #level, #points {
@@ -192,4 +192,13 @@ h4 {
 }
 .profIcon {
 	margin: 2%;
+}
+.container-fluid{
+	padding: 0;
+}
+.width100{
+	width: 100%;
+}
+.navbar-toggler-icon{
+	z-index: 1;k
 }
