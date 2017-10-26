@@ -103,12 +103,6 @@ function initMap() {
   });
 
 // -------------- Timer code [START] ---------------------------------
-		//----- test [START]---
-
-
-
-		//----- test [STOP]---
-
 
 		var timer = new Timer();
 		$('#startButton').click(function () {
@@ -121,19 +115,23 @@ function initMap() {
 				//Start the timer
 				//start google maps
 				//Add pause button
-				$('#startButton').text('Pause');
+				$('#startButton').text('Pause').addClass('pauseButton');
 				$('#startStopPauseButtonGroup').append(
 					"<button id='stopButton' class='btn btn-custom mt-2' data-status='btn-stop-initial'" +
-					" type='submit'>Stop</button>");
+					" data-target='#modalStopWarning' data-toggle='modal' submit'>Stop</button>");
 
 				timer.start();
 				googleMaps();
 				$(this).attr("data-status",'btn-pause-start');
+				//Stop button modal
+				$('#stopButton').click(function () {
+					timer.pause();
+				}).addClass('stopButton');
 
 			}
 			//Pausing time in the start state
 			if(state == 'btn-pause-start' ) {
-				$('#startButton').text('Start');
+				$('#startButton').text('Start').removeClass('pauseButton').addClass('startButton');
 				timer.pause();
 				$(this).attr("data-status", 'btn-start-pause');
 			}
@@ -141,7 +139,7 @@ function initMap() {
 			//Restarting from pause state
 			if(state == 'btn-start-pause'){
 				timer.start(); //Without start google maps
-				$('#startButton').text('Pause');
+				$('#startButton').text('Pause').addClass('pauseButton').removeClass('startButton');
 				//set the data status to stop
 				//Start the timer
 				$(this).attr("data-status",'btn-pause-start');
@@ -152,7 +150,6 @@ function initMap() {
 				console.log("Data status is: " , state);
 
 			}
-
 		});
 
 
@@ -161,13 +158,7 @@ function initMap() {
 			timer.stop();
 		});
 
-		$('#txt_Timer .test_pauseButton').click(function () {
-			timer.pause();
-		});
 
-		$('#txt_Timer .test_resetButton').click(function () {
-			 timer.reset();
-		 });
 
 		timer.addEventListener('secondsUpdated', function (e) {
 			$('#txt_Timer .timerValues').html(timer.getTimeValues().toString());
@@ -178,6 +169,21 @@ function initMap() {
 		timer.addEventListener('reset', function (e) {
 			$('#txt_Timer .timerValues').html(timer.getTimeValues().toString());
 		});
+		//------------------------------------Modals [START]------------------------------------
+		$('#modal_Yes').click(function(){
+			//Save the times and store in database.
+			//Return to page in initial state.
+
+		});
+		$('#modal_No').click(function(){
+			//Remove modal
+			//Return to page.
+			timer.start();
+
+		});
+		//What happens if user doesn't press 'yes' or 'no'?
+
+		//------------------------------------Modals [STOP]------------------------------------
 
 		/*timer.addEventListener('targetAchieved', function (e) {
 		 console.log("THE EVENT IS COMPLETE!!!!!!!");
@@ -218,11 +224,6 @@ function initMap() {
 
 
 	//-------------- Google Map code [STOP] ---------------------------
-
-	/*$("#stop").on("click", function(e) {
-		e.preventDefault();
-		trackBol = true;
-	});*/
 
 
 

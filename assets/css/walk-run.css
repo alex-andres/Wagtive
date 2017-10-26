@@ -1,15 +1,44 @@
-#stopButton{
-    background-color: red;
-    border-color: red;
+.stopButton{
+    background-color: #ff081c;
+    border-color: #FF081C;
+    cursor: pointer;
+    border-radius: .5rem;
+    width:145px;
+    height: 40px;
+}
+
+.startButton{
+     background-color: #2dbc35;
+     border-color: #2DBC35;
+     cursor: pointer;
+     border-radius: .5rem;
+     width:145px;
+     height: 40px;
+ }
+.pauseButton{
+    background-color: #ffa340;
+    border-color: #ffa340;
+    cursor: pointer;
+    border-radius: .5rem;
+    width:145px;
+    height: 40px;
+}
+#modal_Yes{
+
+    background-color: #2dbc35;
+    border-color: #2DBC35;
     cursor: pointer;
     border-radius: .5rem;
 }
-
-#startButton{
-    background-color: forestgreen;
-    border-color: forestgreen;
+#modal_No{
+    background-color: #FF081C;
+    border-color: #FF081C;
     cursor: pointer;
     border-radius: .5rem;
+}
+#modalStopWarning{
+
+
 }
 /*
 .btn-custom {
