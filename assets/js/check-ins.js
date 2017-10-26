@@ -38,7 +38,7 @@ $(function() {
 				long = position.coords.longitude;
 				latt = position.coords.latitude;
 
-				$.getJSON(`http://45.77.119.239:3002/?latitude=${latt}&longitude=${long}`,{method: "GET"})
+				$.getJSON(`https://api.wagtive.com/?latitude=${latt}&longitude=${long}`,{method: "GET"})
 				.done(function (response) {
 
 					$("#check-ins-modal").html("");
