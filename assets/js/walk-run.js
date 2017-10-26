@@ -173,25 +173,22 @@ function initMap() {
 		$('#modal_Yes').click(function(){
 			//Save the times and store in database.
 			//Return to page in initial state.
-
 		});
 		$('#modal_No').click(function(){
 			//Remove modal
 			//Return to page.
 			timer.start();
-
 		});
 		//What happens if user doesn't press 'yes' or 'no'?
-
 		//------------------------------------Modals [STOP]------------------------------------
 
 		/*timer.addEventListener('targetAchieved', function (e) {
 		 console.log("THE EVENT IS COMPLETE!!!!!!!");
 		 });*/
-// -------------- Timer code [STOP]---------------------------------
+	// -------------- Timer code [STOP]---------------------------------
 
 
-		//-------------- Google Map code [START] ---------------------------
+	//-------------- Google Map code [START] ---------------------------
 	function googleMaps(){
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(function(position) {
@@ -221,13 +218,11 @@ function initMap() {
 		}
 
 	}
-
-
 	//-------------- Google Map code [STOP] ---------------------------
 
 
 
-};//-------------------  Start/Stop button  [END]-------------------
+};
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 	infoWindow.setPosition(pos);
