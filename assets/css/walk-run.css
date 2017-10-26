@@ -1,0 +1,26 @@
+#stopButton{
+    background-color: red;
+    border-color: red;
+    cursor: pointer;
+    border-radius: .5rem;
+}
+
+#startButton{
+    background-color: forestgreen;
+    border-color: forestgreen;
+    cursor: pointer;
+    border-radius: .5rem;
+}
+/*
+.btn-custom {
+    color: #fff;
+    cursor: pointer;
+    background-color: #0D90E6;
+    border-color: #0D90E6;
+    border-radius: .5rem;
+}
+
+.btn-custom:hover {
+    background-color: #76B33E;
+    border-color: #76B33E;
+}*/

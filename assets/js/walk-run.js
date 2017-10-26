@@ -114,40 +114,37 @@ function initMap() {
 		$('#startButton').click(function () {
 
 			var state = $(this).attr("data-status");
-			//Start the time.
-			if(state == 'inactive' ){
-				console.log("Data status: " , state);
-				console.log("you clicked the start button!");
+			//Start the time from the initial state.
+			if(state == 'btn-start-initial' ){
 				//set the data status to start
 				//Change start button to pause
 				//Start the timer
 				//start google maps
+				//Add pause button
 				$('#startButton').text('Pause');
+				$('#startStopPauseButtonGroup').append(
+					"<button id='stopButton' class='btn btn-custom mt-2' data-status='btn-stop-initial'" +
+					" type='submit'>Stop</button>");
+
 				timer.start();
-				//Don't need to start Google Maps 2x??????????? for paused.
 				googleMaps();
-				console.log("Data status: " , state);
-				$(this).attr("data-status",'start');
+				$(this).attr("data-status",'btn-pause-start');
 
 			}
-			//Restarting from paused state
-			if(state == 'paused' ) {
-				console.log("Data status: ", state);
-				console.log("you clicked the start button!");
-				$('#startButton').text('Pause');
-				timer.start();
-				//Don't need to start Google Maps 2x??????????? for paused.
-				console.log("Data status: ", state);
-				$(this).attr("data-status", 'start');
-			}
-			//Pause the time
-			if(state == 'start'){
-				console.log("Data status is: " , state);
-				timer.pause();
+			//Pausing time in the start state
+			if(state == 'btn-pause-start' ) {
 				$('#startButton').text('Start');
+				timer.pause();
+				$(this).attr("data-status", 'btn-start-pause');
+			}
+
+			//Restarting from pause state
+			if(state == 'btn-start-pause'){
+				timer.start(); //Without start google maps
+				$('#startButton').text('Pause');
 				//set the data status to stop
 				//Start the timer
-				$(this).attr("data-status",'paused');
+				$(this).attr("data-status",'btn-pause-start');
 
 			}
 			//Resume the time

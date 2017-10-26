@@ -2,12 +2,13 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Walking/Running</title>
+	<title>Walking/Running: Get moving today!</title>
 	<link rel="stylesheet" href="assets/css/reset.css">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:500, 900" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 	<link rel="stylesheet" href="assets/css/loggedin.css">
+	<link rel="stylesheet" href="assets/css/walk-run.css">
 	<link rel="apple-touch-icon" sizes="57x57" href="assets/icons/apple-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="assets/icons/apple-icon-60x60.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="assets/icons/apple-icon-72x72.png">
@@ -39,6 +40,7 @@
 
 
 </head>
+<!------------------------------------ Check-in Modal [STOP]----------------------------------------->
 <div class="modal" id="checkInModal">
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
@@ -67,6 +69,30 @@
 		</div>
 	</div>
 </div>
+<!------------------------------------ Check-in Modal [STOP]----------------------------------------->
+
+<!------------------------------------ Stop Warning Modal [START]----------------------------------------->
+<!-- Modal -->
+<div class="modal fade" id="stopWarning" tabindex="-1" role="dialog" aria-labelledby="stopWarning"
+	 aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+				<div class="modal-body">
+					Are you sure you want to stop?
+				</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary">Yes</button>
+				<button type="button" class="btn btn-primary">No</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!------------------------------------ Stop Warning Modal  [STOP]----------------------------------------->
 <body>
 	<div class="container-fluid">
 		<div class="row align-items-center justify-content-center" id="lnavMenu">
@@ -115,7 +141,8 @@
 				</nav>
 			</div>
 		</div>
-		<!-- TIMER INFORMATION [START]------------------------------->
+		<!-- TIMER STATS [START]------------------------------->
+
 		<div class="row justify-content-start" style="line-height: 5px">
 			<div class="col-2"></div>
 			<div id="txt_Timer"  class="col-2 text-center">
@@ -131,15 +158,16 @@
 				<span>mi/min</span>
 			</div>
 		</div>
-		<!-- TIMER INFORMATION [END]---------------------------------->
+		<!-- TIMER STATS [END]---------------------------------->
 		<div class="row mt-3 justify-content-center" id="taller">
 			<div id="map" class="col-6">
 			</div>
 		<!-- START/STOP BUTTONS [START] --------------------------------------->
 			<div class="row justify-content-center">
-				<div class="col-6">
-				<button id="startButton" class="btn btn-custom px-5 mt-3 " data-status="inactive" type="submit">Start
-				</button>
+				<div id="startStopPauseButtonGroup" class="col-6">
+					<button id="startButton" class="btn btn-custom px-5 mt-3 " data-status="btn-start-initial"
+							type="submit">Start
+					</button>
 				<!--<button  id="stopButton" class="btn btn-custom px-5 mt-3 " type="submit">Pause</button>-->
 				</div>
 				<div id="output">
