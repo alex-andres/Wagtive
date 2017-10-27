@@ -10,7 +10,6 @@
     };
     firebase.initializeApp(config);
 
-
     const db = firebase.database();
     const auth = firebase.auth();
 
@@ -22,3 +21,10 @@
     var petName;
 
     var user;
+
+    $("#infoTooltip").hover(function () {
+        $('[data-toggle="tooltip"]').tooltip("show")
+    },
+    function () {
+        $('[data-toggle="tooltip"]').tooltip("hide")
+    })

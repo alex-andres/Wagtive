@@ -1,4 +1,3 @@
-
 $(function() {
 
 	var long = 0;
@@ -38,14 +37,7 @@ $(function() {
 				long = position.coords.longitude;
 				latt = position.coords.latitude;
 
-				$.ajax({
-					url: `http://45.77.119.239:3002/?latitude=${latt}&longitude=${long}`,
-					method: 'GET',
-					data: {
-						long,
-						latt
-					}
-				})
+				$.getJSON(`https://api.wagtive.com/?latitude=${latt}&longitude=${long}`,{method: "GET"})
 				.done(function (response) {
 
 					$("#check-ins-modal").html("");
@@ -62,8 +54,6 @@ $(function() {
 						inf1.append(response.businesses[i].name);
 						inf2.append(response.businesses[i].location.display_address[0]+" "+response.businesses[i].location.display_address[1]);
 						inf3.append(" Rating: "+response.businesses[i].rating);
-						console.log(response.businesses[i].rating);
-						console.log(inf3);
 						div2.append(inf1).append(inf2).append(inf3);
 						var btn=$("<button>").addClass("btn btn-outline-secondary").text("Check in");
 						div3.append(btn);
