@@ -169,7 +169,8 @@ function initMap() {
 		$('#modal_Yes').click(function(){
 			//Save the times and store in database.
 			$('#exampleModal').modal('hide');
-			resetTimer();
+			location.reload();
+			//resetTimer();
 			timer.stop();
 		});
 		$('#modal_No').click(function(){
