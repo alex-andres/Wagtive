@@ -118,7 +118,7 @@ function initMap() {
 				$('#startButton').text('Pause').addClass('pauseButton');
 				$('#startStopPauseButtonGroup').append(
 					"<button id='stopButton' class='btn btn-custom mt-2' data-status='btn-stop-initial'" +
-					" data-target='#modalStopWarning' data-toggle='modal' submit'>Stop</button>");
+					" data-target='#exampleModal' data-toggle='modal' submit'>Stop</button>");
 
 				timer.start();
 				googleMaps();
@@ -148,17 +148,13 @@ function initMap() {
 			//Resume the time
 			if(state == 'pause'){
 				console.log("Data status is: " , state);
-
 			}
 		});
-
 
 		$('#stopButton').click(function () {
 			console.log("you clicked the stop button!");
 			timer.stop();
 		});
-
-
 
 		timer.addEventListener('secondsUpdated', function (e) {
 			$('#txt_Timer .timerValues').html(timer.getTimeValues().toString());
@@ -172,19 +168,27 @@ function initMap() {
 		//------------------------------------Modals [START]------------------------------------
 		$('#modal_Yes').click(function(){
 			//Save the times and store in database.
-			//Return to page in initial state.
+			$('#exampleModal').modal('hide');
+			resetTimer();
+			timer.stop();
 		});
 		$('#modal_No').click(function(){
-			//Remove modal
-			//Return to page.
+			$('#exampleModal').modal('hide');
 			timer.start();
 		});
-		//What happens if user doesn't press 'yes' or 'no'?
 		//------------------------------------Modals [STOP]------------------------------------
 
 		/*timer.addEventListener('targetAchieved', function (e) {
 		 console.log("THE EVENT IS COMPLETE!!!!!!!");
 		 });*/
+
+		function resetTimer(){
+			$('#txt_Timer .timerValues').html('<h4 >00:00:00</h4>');
+			$('#startButton').attr('data-status', 'btn-start-initial').text();
+			$('#startButton').text('Start').removeClass('pauseButton').addClass('startButton');
+
+
+		}
 	// -------------- Timer code [STOP]---------------------------------
 
 

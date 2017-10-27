@@ -6,6 +6,9 @@
     width:145px;
     height: 40px;
 }
+.stopButton a:hover {
+    color: #ff493f;
+}
 
 .startButton{
      background-color: #2dbc35;
@@ -15,6 +18,9 @@
      width:145px;
      height: 40px;
  }
+.startButton a:hover {
+    color: #51bc5b;
+}
 .pauseButton{
     background-color: #ffa340;
     border-color: #ffa340;
@@ -23,6 +29,9 @@
     width:145px;
     height: 40px;
 }
+.pauseButton a:hover {
+    color: #ffc46e;
+}
 #modal_Yes{
 
     background-color: #2dbc35;
@@ -30,16 +39,20 @@
     cursor: pointer;
     border-radius: .5rem;
 }
+#modal_Yes a:hover {
+    color: #51bc5b;
+}
 #modal_No{
     background-color: #FF081C;
     border-color: #FF081C;
     cursor: pointer;
     border-radius: .5rem;
 }
-#modalStopWarning{
-
-
+#modal_No a:hover {
+    color: #ff493f;
 }
+
+
 /*
 .btn-custom {
     color: #fff;
