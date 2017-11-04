@@ -106,13 +106,16 @@ input {
 }
 
 @media handheld,
-screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
+screen and (min-device-width: 414px) and (max-device-width: 736px) and (orientation: portrait) {
     body {
         background-size: cover;
         background-repeat: no-repeat;
         background-image: url(../images/background-m.jpg);
         background-position: center;
         background-attachment: fixed;
+    }
+    #modal-close {
+        right: 20px;
     }
     #logo {
         margin-left: 15vw;
