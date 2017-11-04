@@ -1,195 +1,204 @@
 body {
-	color: #868e96;
+    color: #868e96;
 }
+
 img {
-	width: 100%;
+    width: 100%;
 }
 
 input {
-	height: 30px;
-	font-size: 14px;
+    height: 30px;
+    font-size: 14px;
 }
 
 label {
-/*	color: #868e96;*/
-	font-size: 14px;
+    /*	color: #868e96;*/
+    font-size: 14px;
 }
 
 h2 {
-	font-size: 4vh;
+    font-size: 4vh;
 }
 
 h4 {
-	font-size: 3vh;
+    font-size: 3vh;
 }
 
-.modal-header, .modal-footer {
-	color: white;
-	background-color: #0D90E6;
-	height: 40px;
+.modal-header,
+.modal-footer {
+    color: white;
+    background-color: #0D90E6;
+    height: 40px;
 }
 
 .modal-footer {
-	padding: 15px 0 15px 0;
+    padding: 15px 0 15px 0;
 }
 
 #checkInModal .modal-footer {
-	background: transparent;
+    background: transparent;
 }
 
 .checkInImage {
-	width: 80%;
-	margin-left: 10%
+    width: 80%;
+    margin-left: 10%
 }
 
 .form-control::placeholder {
-	font-size: 11px;
+    font-size: 11px;
 }
 
 .custom-file-control:empty::after {
-	content: "Choose file...";
-	font-size: 11px;
+    content: "Choose file...";
+    font-size: 11px;
 }
 
 .custom-file-control::before {
-	content: "Browse";
+    content: "Browse";
 }
 
 .custom-file-control::before {
-	position: absolute;
-	top: -1px;
-	right: -1px;
-	bottom: -1px;
-	z-index: 6;
-	display: block;
-	height: 2.5rem;
-	padding: .5rem 1rem;
-	line-height: 1.5;
-	color: #495057;
-	background-color: #e9ecef;
-	border: 1px solid rgba(0,0,0,.15);
-	border-radius: 0 .25rem .25rem 0;
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
+    z-index: 6;
+    display: block;
+    height: 2.5rem;
+    padding: .5rem 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #e9ecef;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: 0 .25rem .25rem 0;
 }
 
 .breadcrumb {
-	background-color: transparent;
+    background-color: transparent;
 }
 
 .breadcrumb-item {
-	color: #0D90E6;
+    color: #0D90E6;
 }
 
 .btn-custom {
-	color: white;
-	background-color: #0D90E6;
-	border-color: #0D90E6;
-	border-radius: .5rem;
+    color: white;
+    background-color: #0D90E6;
+    border-color: #0D90E6;
+    border-radius: .5rem;
 }
 
 .btn-custom:hover {
-	background-color: #76B33E;
-	border-color: #76B33E;
+    background-color: #76B33E;
+    border-color: #76B33E;
 }
 
 .dropdown-menu {
-	background-color: #fafafa;
-	font-size: 13px;
+    background-color: #fafafa;
+    font-size: 13px;
 }
 
 .dropdown-item {
-/*	color: #868e96;*/
+    /*	color: #868e96;*/
 }
 
 .dropdown-item:hover {
-	color: white;
-	background-color: #aaa;
+    color: white;
+    background-color: #aaa;
 }
 
 #saveProfile {
-	margin-right: -15px;
+    margin-right: -15px;
 }
 
 #profileImage {
-	border: 1px solid #dadadb;
-	border-radius: .5rem;
+    border: 1px solid #dadadb;
+    border-radius: .5rem;
 }
 
 #stats {
-/*	color: #868e96;*/
-	font-size: 13px;
+    /*	color: #868e96;*/
+    font-size: 13px;
 }
 
 #stats .font-weight-bold {
-	font-size: 16px;
+    font-size: 16px;
 }
 
 #nameSpan {
-	font-size: 24px;
-	font-weight: bold;
+    font-size: 24px;
+    font-weight: bold;
 }
 
 #startActivity {
-	font-size: 13px;
+    font-size: 13px;
 }
 
 #progressOut {
-	background: white;
-	border: 1px solid #868e96;
-	border-radius: .5rem;
-	width: 100%;
-	height: 30px;
+    background: white;
+    border: 1px solid #868e96;
+    border-radius: .5rem;
+    width: 100%;
+    height: 30px;
 }
 
 #progressIn {
-	background: #76B33E;
-	border-radius: .5rem 0 0 .5rem;
-	width: calc(50% - 2px);
-	height: 28px;
+    background: #76B33E;
+    border-radius: .5rem 0 0 .5rem;
+    width: calc(50% - 2px);
+    height: 28px;
 }
 
 #pawmap {
-	width: 100%;
+    width: 100%;
 }
 
 #llogo {
-	width: 100%;
+    width: 100%;
 }
 
 #lnavMenu {
-	background-color: #0D90E6;
-	height: 50px;
+    background-color: #0D90E6;
+    height: 50px;
 }
 
-#level, #points {
-	font-size: 20px;
+#level,
+#points {
+    font-size: 20px;
 }
 
 .tooltip {
-	font-size: 11px;
+    font-size: 11px;
 }
 
 #activities {
-	font-size: 13px;
+    font-size: 13px;
 }
 
 .nav-link {
-	color: white;
+    color: white;
 }
 
 .nav-link:hover {
-	color: white;
+    color: white;
 }
 
-.tempContainer button:hover a{
-	color: white;
+.tempContainer button:hover a {
+    color: white;
 }
-#map{
-	height: 400px;
-	width: 100%;
+
+#map {
+    height: 400px;
+    width: 100%;
 }
-.profPic{
-	max-width: 100px;
+
+.profPic {
+    max-width: 100px;
 }
+
 .profIcon {
-	margin: 2%;
+    margin: 2%;
 }
+
+@media handheld,
+screen and (max-width: 736px) {}
