@@ -196,9 +196,26 @@ h4 {
 }
 
 @media handheld,
-screen and (max-width: 736px) {
+screen and (max-width: 414px) {
+    #llogo {
+        display: none;
+    }
+    #nameSpan {
+        font-size: 18px;
+        font-weight: bold;
+    }
+    #level,
+    #points {
+        font-size: 16px;
+    }
+    #startActivity {
+        font-size: 10px;
+    }
+    .breadcrumb {
+        display: none;
+    }
     .nav-link {
-        font-size: 14px
+        font-size: 18px;
     }
     .manuallHide {
         display: none
