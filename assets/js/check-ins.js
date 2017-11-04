@@ -41,9 +41,9 @@ $(function() {
                         $("#check-ins-modal").html("");
 
                         for (var i = 0; i < 7; i++) {
-                            var div1 = $('<div>').addClass("col-2 pr-0");
-                            var div2 = $('<div>').addClass("col-8");
-                            var div3 = $('<div>').addClass("col-2");
+                            var div1 = $('<div>').addClass("col-2 col-md-2 pr-0");
+                            var div2 = $('<div>').addClass("col-7 col-md-8 pr-0 pr-md-1");
+                            var div3 = $('<div>').addClass("col-3 col-md-2");
                             var result_img = $('<img>').addClass("checkInImage").attr("src", response.businesses[i].image_url);
                             div1.append(result_img);
                             var inf1 = $('<span>').addClass("font-weight-bold").after("<br>");

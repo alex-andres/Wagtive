@@ -29,6 +29,7 @@
     <meta name="msapplication-TileImage" content="assets/icons/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
     <script src="https://www.gstatic.com/firebasejs/4.4.0/firebase.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIV0dAOGRq72ZQ9OeuRHSMblRj1-noF2g&callback=initMap"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
@@ -123,12 +124,12 @@
                                 <div class="mt-md-1"><span>Points</span><br><span id='points'></span></div>
                             </div>
                             <div class="col-6 col-md-4">
-                                <div class="row ">
-                                    <div class="col-12 col-md-12">
+                                <div class="row">
+                                    <div class="col-12">
                                         <div id="progress"></div>
                                     </div>
-                                    <div class="col-12 col-md-12 text-center">
-                                        <span>To next level</span>
+                                    <div class="col-12">
+                                        <span class="progrssCenter">To next level</span>
                                     </div>
                                 </div>
                             </div>
@@ -136,7 +137,7 @@
                                 <a href="walk-run.html">
                                     <button id="startActivity" class="btn btn-outline-primary col-12">Start Activity</button>
                                 </a>
-                                <a href="#" data-toggle="modal" data-target="#checkInModal">
+                                <a class="d-md-none" href="#" data-toggle="modal" data-target="#checkInModal">
                                     <button id="checkInButton2" class="btn btn-outline-secondary mt-2 col-12 checkInButton">&nbsp;&nbsp;&nbsp;&nbsp;Check In&nbsp;&nbsp;&nbsp;&nbsp;</button>
                                 </a>
                             </div>
@@ -147,15 +148,19 @@
                     </div>
                 </div>
                 <div class="row justify-content-center">
-                    <div class="col-10">
+                    <div class="col-12 col-md-10">
                         <h2 class="manuallHide">Latest Activities</h2>
                         <hr class="manuallHide">
-                        <div class="row justify-content-center">
-                            <div class="col-12 col-md-5">
+                        <div class="row justify-content-center justify-content-md-start">
+
+                            <div class="col-11 col-md-5">
                                 <h4>Recent Check-ins</h4>
-                                <div id="recent-checkins"></div>
+                                <div class="col-12 mt-2" id="recent-checkins">
+
+                                </div>
+
                             </div>
-                            <div class="col-12 col-md-7 mt-4 mt-md-0">
+                            <div class="col-12 col-md-6 mt-4 mt-md-1">
                                 <h4>Recent Activites</h4>
                                 <hr>
                                 <table class="table table-hover activities-table">
@@ -178,8 +183,7 @@
             </div>
         </div>
     </div>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIV0dAOGRq72ZQ9OeuRHSMblRj1-noF2g&callback=initMap">
-    </script>
+
 </body>
 
 </html>
