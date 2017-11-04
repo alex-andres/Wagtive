@@ -88,7 +88,7 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a id="checkInButton" class="nav-link" href="#" data-toggle="modal" data-target="#checkInModal">Check in</a>
+                                <a id="checkInButton" class="nav-link checkInButton" href="#" data-toggle="modal" data-target="#checkInModal">Check in</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="profile.html">Profile</a>
@@ -122,19 +122,22 @@
                                         aria-hidden="true"></i><br><span id='level'></span></div>
                                 <div class="mt-md-1"><span>Points</span><br><span id='points'></span></div>
                             </div>
-                            <div class="col-7 col-md-4">
+                            <div class="col-6 col-md-4">
                                 <div class="row ">
-                                    <div class="col-12 col-md-12 order-1 order-md-1">
+                                    <div class="col-12 col-md-12">
                                         <div id="progress"></div>
                                     </div>
-                                    <div class="col-12 col-md-12 order-3 order-md-2">
-                                        <span>Progress to next level</span>
+                                    <div class="col-12 col-md-12 text-center">
+                                        <span>To next level</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-5 col-md-4 order-2 order-md-3 d-flex align-items-center">
+                            <div class="col-5 col-md-4 d-flex flex-column flex-md-row align-items-center justify-content-around justify-content-md-start">
                                 <a href="walk-run.html">
                                     <button id="startActivity" class="btn btn-outline-primary col-12">Start Activity</button>
+                                </a>
+                                <a href="#" data-toggle="modal" data-target="#checkInModal">
+                                    <button id="checkInButton2" class="btn btn-outline-secondary mt-2 col-12 checkInButton">&nbsp;&nbsp;&nbsp;&nbsp;Check In&nbsp;&nbsp;&nbsp;&nbsp;</button>
                                 </a>
                             </div>
                         </div>
@@ -156,7 +159,7 @@
                             <div class="col-12 col-md-7 mt-4 mt-md-0">
                                 <h4>Recent Activites</h4>
                                 <hr>
-                                <table class="table table-hover">
+                                <table class="table table-hover activities-table">
                                     <thead>
                                         <tr>
                                             <th>Date</th>
@@ -166,7 +169,7 @@
                                             <th>Points</th>
                                         </tr>
                                     </thead>
-                                    <tbody id='activities'>
+                                    <tbody class="activities-table" id='activities'>
                                     </tbody>
                                 </table>
                             </div>
@@ -176,6 +179,8 @@
             </div>
         </div>
     </div>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIV0dAOGRq72ZQ9OeuRHSMblRj1-noF2g&callback=initMap">
+    </script>
 </body>
 
 </html>

@@ -200,6 +200,12 @@ screen and (max-width: 414px) {
     #llogo {
         display: none;
     }
+    .activities-table {
+        font-size: 12px;
+    }
+    .activities-table td {
+        font-size: 11.7px;
+    }
     #nameSpan {
         font-size: 18px;
         font-weight: bold;
@@ -208,14 +214,16 @@ screen and (max-width: 414px) {
     #points {
         font-size: 16px;
     }
-    #startActivity {
+    #startActivity,
+    #checkInButton2 {
+        font-weight: bold;
         font-size: 10px;
     }
     .breadcrumb {
         display: none;
     }
     .nav-link {
-        font-size: 18px;
+        font-size: 8px;
     }
     .manuallHide {
         display: none
