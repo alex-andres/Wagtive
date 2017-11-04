@@ -1,11 +1,72 @@
+var map;
+
+function initMap() {
+    var width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    if (width <= 414) {
+        var zoom = 13;
+    } else {
+        var zoom = 15;
+    }
+    console.log(width)
+    map = new google.maps.Map(document.getElementById('recent-checkins'), {
+        zoom,
+        center: new google.maps.LatLng(34.052248, -118.443421),
+        mapTypeId: 'roadmap'
+    });
+
+    var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+    var icons = {
+        paw: {
+            icon: './assets/images/paw.png'
+        },
+    };
+
+    var features = [{
+        position: new google.maps.LatLng(34.0384586, -118.4425915),
+        type: 'paw'
+    }, {
+        position: new google.maps.LatLng(34.0482918, -118.4381352),
+        type: 'paw'
+    }, {
+        position: new google.maps.LatLng(34.0460812, -118.4521284),
+        type: 'paw'
+    }, {
+        position: new google.maps.LatLng(34.0574848, -118.4447802),
+        type: 'paw'
+    }, {
+        position: new google.maps.LatLng(34.0448891, -118.4452972),
+        type: 'paw'
+    }, ];
+
+    // Create markers.
+    features.forEach(function(feature) {
+        var marker = new google.maps.Marker({
+            position: feature.position,
+            icon: icons[feature.type].icon,
+            map: map
+        });
+    });
+};
+
 $(document).ready(function() {
-    
-    $("#infoTooltip").hover(function () {
-        $('[data-toggle="tooltip"]').tooltip("show")
-    },
-    function () {
-        $('[data-toggle="tooltip"]').tooltip("hide")
-    })
+
+    $.getScript("my_lovely_script.js", function() {
+
+        alert("Script loaded but not necessarily executed.");
+
+    });
+
+    $("#infoTooltip").hover(function() {
+            $('[data-toggle="tooltip"]').tooltip("show")
+        },
+        function() {
+            $('[data-toggle="tooltip"]').tooltip("hide")
+        })
+
+
+
+
+
 
     firebase.auth().onAuthStateChanged(user => {
         // CHECK IF USER IS SIGNED IN
@@ -74,14 +135,14 @@ $(document).ready(function() {
                 $('#profileImage').attr('src', user.photoURL);
 
 
-                    // db.ref('users/' + uid + '/activities').push(
-                    //     {
-                    //         date: '09/20/17',
-                    //         activityType: "Check-In",
-                    //         location: 'Healthy Spot' ,
-                    //         points: 100,
-                    //         distance: ""
-                    //     })
+                // db.ref('users/' + uid + '/activities').push(
+                //     {
+                //         date: '09/20/17',
+                //         activityType: "Check-In",
+                //         location: 'Healthy Spot' ,
+                //         points: 100,
+                //         distance: ""
+                //     })
 
 
                 var activityRef = db.ref('users/' + uid + '/activities');

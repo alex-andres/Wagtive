@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Walking/Running</title>
 	<link rel="stylesheet" href="assets/css/reset.css">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:500, 900" rel="stylesheet">
@@ -25,7 +27,7 @@
 	<link rel="mask-icon" href="assets/icons/safari-pinned-tab.svg" color="#5bbad5">
 	<meta name="msapplication-TileColor" content="#ffffff">
 	<meta name="msapplication-TileImage" content="assets/icons/ms-icon-144x144.png">
-	<meta name="theme-color" content="#ffffff">	
+	<meta name="theme-color" content="#ffffff">
 	<script src="https://www.gstatic.com/firebasejs/4.4.0/firebase.js"></script>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
@@ -35,7 +37,7 @@
 	<script type="text/javascript" src="assets/js/walk-run.js"></script>
 	<script type="text/javascript" src="assets/js/authentication.js"></script>
 	<script type="text/javascript" src="assets/js/index.js"></script>
-
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIV0dAOGRq72ZQ9OeuRHSMblRj1-noF2g&callback=initMap"></script>
 </head>
 <div class="modal" id="checkInModal">
 	<div class="modal-dialog modal-lg" role="document">
@@ -45,8 +47,6 @@
 				<small>Each check in is worth 100 ponts</small>
 			</div>
 			<div class="modal-body" id="check-ins-modal">
-			
-
 			</div>
 			<div class="modal-footer">
 				<h5></h5>
@@ -54,18 +54,19 @@
 		</div>
 	</div>
 </div>
+
 <body>
 	<div class="container-fluid">
 		<div class="row align-items-center justify-content-center" id="lnavMenu">
-			<div class="col-10">
+			<div class="col-12 col-md-10">
 				<div class="row justify-content-between align-items-center">
-					<div class="col-2">
+					<div class="col-2 col-md-2">
 						<img id="llogo" src="assets/images/logo-wh.png" alt="Wagtive Logo">
 					</div>
-					<div class="col-8">
+					<div class="col-12 col-md-8">
 						<ul class="nav nav-pills justify-content-around">
 							<li class="nav-item">
-								<a class="nav-link" href="home.html">Home</a>
+								<a class="nav-link" href="#">Home</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="leaderboard.html">Leaderboard</a>
@@ -82,11 +83,14 @@
 									<a class="dropdown-item" href="#">Challenges</a>
 								</div>
 							</li>
+							<li class="nav-item d-none d-md-block">
+								<a id="checkInButton" class="nav-link checkInButton" href="#" data-toggle="modal" data-target="#checkInModal">Check in</a>
+							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="profile.html">Profile</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="index.html">Logout</a>
+								<a class="nav-link btn" id='logout' href="index.html">Logout</a>
 							</li>
 						</ul>
 					</div>
@@ -94,7 +98,7 @@
 			</div>
 		</div>
 		<div class="row justify-content-center" id="mainContainer">
-			<div class="col-9">
+			<div class="col-md-9">
 				<nav class="breadcrumb">
 					<a class="breadcrumb-item" href="home.html">Home</a>
 					<a class="breadcrumb-item" href="activities.html">Activities</a>
@@ -102,42 +106,42 @@
 				</nav>
 			</div>
 		</div>
-		<div class="row justify-content-start" style="line-height: 5px">
-			<div class="col-2"></div>
+		<div class="row justify-content-around mt-3	mt-md-1 justify-content-md-start" style="line-height: 5px">
+			<div class="col-2 d-none d-md-block"></div>
 			<div class="col-2 text-center">
-				<h4 class="timer">00:00</h4><br>
+				<h4 class="timer">00:00</h4>
+				<br>
 				<span>Time</span>
 			</div>
 			<div class="col-2 text-center">
-				<h4>0.0</h4><br>
+				<h4 id="distanceOutput">00.00</h4>
+				<br>
 				<span>miles</span>
 			</div>
 			<div class="col-2 text-center">
-				<h4>0.0</h4><br>
+				<h4>0.0</h4>
+				<br>
 				<span>mi/min</span>
 			</div>
 		</div>
-		<div class="row mt-3 justify-content-center" id="taller">
-			<div id="map" class="col-6">
+		<div class="row mt-3 justify-content-center">
+			<div id="map" class="col-md-6">
 			</div>
-		<div class="row justify-content-center">
-			<div class="col-6">
-			<button id="start" class="btn btn-custom px-5 mt-3" type="submit">Start</button>
-			<button id="stop" class="btn btn-custom px-5 mt-3" type="submit">Stop</button>
-			</div>
-			<div id="output">
-				
-			</div>
-			<div id="distance">
-				
-			</div>
-			<div id="totalDistance">
-				
+			<div class="row justify-content-center">
+				<div class="col-12 col-md-6 px-0 px-md-1 d-flex d-md-block flex-row justify-content-between justify-content-md-start flex-md-row">
+					<button id="start" class="btn btn-custom px-5 mr-3 mr-md-1 mt-5" type="submit">Start</button>
+					<button id="stop" class="btn btn-custom px-5 ml-3 ml-md-1 mt-5" type="submit">Stop</button>
+				</div>
+				<div id="output">
+				</div>
+				<div id="distance">
+				</div>
+				<div id="totalDistance">
+				</div>
 			</div>
 		</div>
-		</div>	
 	</div>
-	<script async defer 
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIV0dAOGRq72ZQ9OeuRHSMblRj1-noF2g&callback=initMap"></script>
+
 </body>
+
 </html>

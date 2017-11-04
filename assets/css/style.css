@@ -1,104 +1,149 @@
 body {
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-image: url(../images/background.jpg);
-	background-position: center;
-	background-attachment: fixed;
-	font-family: 'Montserrat', sans-serif;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(../images/background.jpg);
+    background-position: center;
+    background-attachment: fixed;
+    font-family: 'Montserrat', sans-serif;
 }
 
 h1 {
-	font-size: 7vh;
-	font-weight: bold;
+    font-size: 7vh;
+    font-weight: bold;
 }
 
 h2 {
-	font-size: 4vh;
-	font-weight: lighter;
+    font-size: 4vh;
+    font-weight: lighter;
 }
 
-h1, h2 {
-	color: white;
-	text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+h1,
+h2 {
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 input {
-	height: 30px;
+    height: 30px;
 }
 
 .form-control {
-	font-size: 11px;
+    font-size: 11px;
 }
 
-.modal-header, .modal-footer {
-	background-color: #0D90E6;
+.modal-header,
+.modal-footer {
+    background-color: #0D90E6;
 }
 
 .modal-footer {
-	padding: 15px 0 15px 0;
+    padding: 15px 0 15px 0;
 }
 
 .modalLogo {
-	width: 100%;
+    width: 100%;
 }
 
 .form-control::placeholder {
-	font-size: 11px;
+    font-size: 11px;
 }
 
 .btn-custom {
-	color: #fff;
-	cursor: pointer;
-	background-color: #0D90E6;
-	border-color: #0D90E6;
-	border-radius: .5rem;
+    color: #fff;
+    cursor: pointer;
+    background-color: #0D90E6;
+    border-color: #0D90E6;
+    border-radius: .5rem;
 }
 
 .btn-custom:hover {
-	background-color: #76B33E;
-	border-color: #76B33E;
+    background-color: #76B33E;
+    border-color: #76B33E;
 }
 
 #signupModal {
-	color: #868e96;
-	font-size: 13px;
+    color: #868e96;
+    font-size: 13px;
 }
 
 #emailVerificationModal {
-	color: #868e96;
-	font-size: 13px;
+    color: #868e96;
+    font-size: 13px;
 }
 
 #overlayText {
-	position: absolute;
-	width: 100%;
-	height: calc(8vh + 48px);
-	top: 50vh;
-	margin-top: calc(-25vh + 4vh + 24px);
+    position: absolute;
+    width: 100%;
+    height: calc(8vh + 48px);
+    top: 50vh;
+    margin-top: calc(-25vh + 4vh + 24px);
 }
 
 #logo {
-	width: 100%;
+    width: 100%;
 }
 
 #signIn {
-	background-color: transparent;
-	color: #0D90E6;
-	border: 0;
+    background-color: transparent;
+    color: #0D90E6;
+    border: 0;
 }
 
 #navMenu {
-	position: absolute;
-	top: calc(100vh - 80px);
-	height: 80px;
-	width: 100%;
+    position: absolute;
+    top: calc(100vh - 80px);
+    height: 80px;
+    width: 100%;
 }
 
 #navMenu a {
-	color: white;
-	transition: all 0.3s;
+    color: white;
+    transition: all 0.3s;
 }
 
 #navMenu a:hover {
-	color: #0D90E6;
+    color: #0D90E6;
+}
+
+@media handheld,
+screen and (min-device-width: 414px) and (max-device-width: 736px) and (orientation: portrait) {
+    body {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: url(../images/background-m.jpg);
+        background-position: center;
+        background-attachment: fixed;
+    }
+    #modal-close {
+        right: 20px;
+    }
+    #logo {
+        margin-left: 15vw;
+        margin-bottom: 20px;
+        width: 60vw;
+    }
+    #signIn {
+        background-color: transparent;
+        color: #fff;
+        border: 0;
+    }
+    #overlayText {
+        position: absolute;
+        width: 100%;
+        height: calc(8vh + 48px);
+        top: 90vh;
+    }
+    #navMenu {
+        display: none;
+    }
+    h1 {
+        font-size: 3vh;
+        margin-left: 0;
+        margin-right: 0;
+        font-weight: bold;
+    }
+    h2 {
+        font-size: 2vh;
+        font-weight: lighter;
+    }
 }

@@ -2,176 +2,191 @@
 <html>
 
 <head>
-	<meta charset="utf-8">
-	<title>Home</title>
-	<link rel="stylesheet" href="assets/css/reset.css">
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:500, 900" rel="stylesheet">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-	<link rel="stylesheet" href="assets/css/loggedin.css">
-	<link rel="stylesheet" href="assets/js/LoadingBar/LoadingBar.css">
-	<link rel="apple-touch-icon" sizes="57x57" href="assets/icons/apple-icon-57x57.png">
-	<link rel="apple-touch-icon" sizes="60x60" href="assets/icons/apple-icon-60x60.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="assets/icons/apple-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="76x76" href="assets/icons/apple-icon-76x76.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="assets/icons/apple-icon-114x114.png">
-	<link rel="apple-touch-icon" sizes="120x120" href="assets/icons/apple-icon-120x120.png">
-	<link rel="apple-touch-icon" sizes="144x144" href="assets/icons/apple-icon-144x144.png">
-	<link rel="apple-touch-icon" sizes="152x152" href="assets/icons/apple-icon-152x152.png">
-	<link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-icon-180x180.png">
-	<link rel="icon" type="image/png" sizes="192x192" href="assets/icons/android-icon-192x192.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="assets/icons/favicon-96x96.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
-	<link rel="manifest" href="assets/icons/manifest.json">
-	<link rel="mask-icon" href="assets/icons/safari-pinned-tab.svg" color="#5bbad5">
-	<meta name="msapplication-TileColor" content="#ffffff">
-	<meta name="msapplication-TileImage" content="assets/icons/ms-icon-144x144.png">
-	<meta name="theme-color" content="#ffffff">
-	<script src="https://www.gstatic.com/firebasejs/4.4.0/firebase.js"></script>
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="assets/js/app.js"></script>
-	<script type="text/javascript" src="assets/js/authentication.js"></script>
-	<script type="text/javascript" src="assets/js/home.js"></script>
-	<script type="text/javascript" src="assets/js/LoadingBar/LoadingBar.js"></script>
-	<script type="text/javascript" src="assets/js/check-ins.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:500, 900" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/loggedin.css">
+    <link rel="stylesheet" href="assets/js/LoadingBar/LoadingBar.css">
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/icons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/icons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/icons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/icons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/icons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/icons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/icons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/icons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/icons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+    <link rel="manifest" href="assets/icons/manifest.json">
+    <link rel="mask-icon" href="assets/icons/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="assets/icons/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <script src="https://www.gstatic.com/firebasejs/4.4.0/firebase.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="assets/js/app.js"></script>
+    <script type="text/javascript" src="assets/js/authentication.js"></script>
+    <script type="text/javascript" src="assets/js/home.js"></script>
+    <script type="text/javascript" src="assets/js/LoadingBar/LoadingBar.js"></script>
+    <script type="text/javascript" src="assets/js/check-ins.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIV0dAOGRq72ZQ9OeuRHSMblRj1-noF2g&callback=initMap"></script>
 </head>
 <div class="modal" id="checkInModal">
-	<div class="modal-dialog modal-lg" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<span>Check in</span>
-				<small>Each check in is worth 100 ponts</small>
-			</div>
-			<div class="modal-body" id="check-ins-modal">
-				<div class="row justify-content-center">
-					<div class="col-2">
-						<img style="height: 100%" src="assets/images/loading.gif">		
-					</div>
-				</div>
-			</div>
-			<div class="modal-footer">
-				<h5></h5>
-			</div>
-		</div>
-	</div>
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span>Check in</span>
+                <small>Each check in is worth 100 ponts</small>
+            </div>
+            <div class="modal-body" id="check-ins-modal">
+                <div class="row justify-content-center">
+                    <div class="col-2">
+                        <img style="height: 100%" src="assets/images/loading.gif">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="modal-close" type="button" class="btn btn-outline-danger mr-4 d-md-none" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>
+</div>
+</div>
+
 <body>
-	<div class="container-fluid">
-		<div class="row align-items-center justify-content-center" id="lnavMenu">
-			<div class="col-10">
-				<div class="row justify-content-between align-items-center">
-					<div class="col-2">
-						<img id="llogo" src="assets/images/logo-wh.png" alt="Wagtive Logo">
-					</div>
-					<div class="col-8">
-						<ul class="nav nav-pills justify-content-around">
-							<li class="nav-item">
-								<a class="nav-link" href="#">Home</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="leaderboard.html">Leaderboard</a>
-							</li>
-							<li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle" href="activities.html" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <div class="container-fluid">
+        <div class="row align-items-center justify-content-center" id="lnavMenu">
+            <div class="col-12 col-md-10">
+                <div class="row justify-content-between align-items-center">
+                    <div class="col-2 col-md-2">
+                        <img id="llogo" src="assets/images/logo-wh.png" alt="Wagtive Logo">
+                    </div>
+                    <div class="col-12 col-md-8">
+                        <ul class="nav nav-pills justify-content-around">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="leaderboard.html">Leaderboard</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="activities.html" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									Activities
 								</a>
-								<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-									<a class="dropdown-item" href="walk-run.html">Walking/Running</a>
-									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="#">Meet-ups</a>
-									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="#">Challenges</a>
-								</div>
-							</li>
-							<li class="nav-item">
-								<a id="checkInButton" class="nav-link" href="#" data-toggle="modal" data-target="#checkInModal">Check in</a>
-							</li>						   
-							<li class="nav-item">
-								<a class="nav-link" href="profile.html">Profile</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link btn" id='logout' href="index.html">Logout</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row justify-content-center">
-			<div class="col-9">
-				<nav class="breadcrumb">
-					<span class="breadcrumb-item active">Home</span>
-				</nav>
-			</div>
-		</div>
-		<div class="row justify-content-center" id="mainContainer">
-			<div class="col-10">
-				<div class="row justify-content-center" id="stats">
-					<div class="col-2">
-						<img id="profileImage" src="assets/images/profile.jpg" alt="Profile Image">
-					</div>
-					<div class="col-8">
-						<div class="row justify-content-between">
-							<div class="col-4 d-flex flex-column">
-								<span id="nameSpan"></span><br>
-								<div class="mt-1"><span>Current Level</span><i id="infoTooltip" class="ml-2 fa fa-info-circle" data-toggle="tooltip" data-placement="right" data-html="true" title="<strong>Levels:</strong><ol><li>Puppy</li><li>Lap Dog</li><li>Tail Wagger</li><li>Lively Pooch</li><li>Sporty Hound</li><li>Alpha Dog</li></ol>" aria-hidden="true"></i><br><span id='level' class=></span></div>
-								<div class="mt-1"><span>Points</span><br><span id='points'></span></div>
-							</div>
-							<div class="col-4">
-								<div class="row">
-									<div class="col-12">
-										<div id="progress"></div>
-									</div>
-									<div class="col-12">
-										<span>Progress to next level</span>
-									</div>									
-								</div>
-							</div>
-							<div class="col-4 d-flex align-items-center justify-content-start">
-								<a href="walk-run.html">
-									<button id="startActivity" class="btn btn-outline-primary">Start Activity</button>
-								</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-10"><hr></div>
-				</div>
-				<div class="row justify-content-center">
-					<div class="col-10">
-						<h2>Latest Activities</h2>
-						<hr>
-						<div class="row">
-							<div class="col-5">
-								<h4>Recent Check-ins</h4>
-								<hr>
-								<img src="assets/images/pawmap.png" id="pawmap" alt="">
-							</div>
-							<div class="col-7">
-								<h4>Recent Activites</h4>
-								<hr>
-								<table class="table table-hover">
-								<thead>
-									<tr>
-										<th>Date</th>
-										<th>Activity</th>
-										<th>Location</th>
-										<th>Distance</th>
-										<th>Points</th>
-									</tr>
-								</thead>
-								<tbody id='activities'>
-								</tbody>
-						</table>
-							</div>
-						</div>
-						
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="walk-run.html">Walking/Running</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Meet-ups</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Challenges</a>
+                                </div>
+                            </li>
+                            <li class="nav-item d-none d-md-block">
+                                <a id="checkInButton" class="nav-link checkInButton" href="#" data-toggle="modal" data-target="#checkInModal">Check in</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="profile.html">Profile</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link btn" id='logout' href="index.html">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-9">
+                <nav class="breadcrumb">
+                    <span class="breadcrumb-item active">Home</span>
+                </nav>
+            </div>
+        </div>
+        <div class="row justify-content-center" id="mainContainer">
+            <div class="col-12 col-md-10">
+                <div class="row justify-content-center mt-4 mt-md-0" id="stats">
+                    <div class="col-4 col-md-2">
+                        <img id="profileImage" src="assets/images/profile.jpg" alt="Profile Image">
+                    </div>
+                    <div class="col-8 col-md-8">
+                        <div class="row justify-content-md-between">
+                            <div class="col-12 col-md-4 d-flex flex-column">
+                                <span id="nameSpan"></span><br>
+                                <div class="mt-md-1"><span>Current Level</span><i id="infoTooltip" class="ml-2 fa fa-info-circle" data-toggle="tooltip" data-placement="right" data-html="true" title="<strong>Levels:</strong><ol><li>Puppy</li><li>Lap Dog</li><li>Tail Wagger</li><li>Lively Pooch</li><li>Sporty Hound</li><li>Alpha Dog</li></ol>"
+                                        aria-hidden="true"></i><br><span id='level'></span></div>
+                                <div class="mt-md-1"><span>Points</span><br><span id='points'></span></div>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div id="progress"></div>
+                                    </div>
+                                    <div class="col-12">
+                                        <span class="progrssCenter">To next level</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-5 col-md-4 d-flex flex-column flex-md-row align-items-center justify-content-around justify-content-md-start">
+                                <a href="walk-run.html">
+                                    <button id="startActivity" class="btn btn-outline-primary col-12">Start Activity</button>
+                                </a>
+                                <a class="d-md-none" href="#" data-toggle="modal" data-target="#checkInModal">
+                                    <button id="checkInButton2" class="btn btn-outline-success mt-2 col-12 checkInButton">&nbsp;&nbsp;&nbsp;&nbsp;Check In&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-10 mt-sm-4 mt-md-0">
+                        <hr>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-10">
+                        <h2 class="manuallHide">Latest Activities</h2>
+                        <hr class="manuallHide">
+                        <div class="row justify-content-center justify-content-md-start">
+
+                            <div class="col-11 col-md-5">
+                                <h4>Recent Check-ins</h4>
+                                <div class="col-12 mt-2" id="recent-checkins">
+
+                                </div>
+
+                            </div>
+                            <div class="col-12 col-md-6 mt-4 mt-md-1">
+                                <h4>Recent Activites</h4>
+                                <hr>
+                                <table class="table table-hover activities-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Activity</th>
+                                            <th>Location</th>
+                                            <th>Distance</th>
+                                            <th>Points</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="activities-table" id='activities'>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
+
 </html>
