@@ -4,12 +4,13 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Walking/Running</title>
+	<title>Walking/Running: Get moving today!</title>
 	<link rel="stylesheet" href="assets/css/reset.css">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:500, 900" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 	<link rel="stylesheet" href="assets/css/loggedin.css">
+	<link rel="stylesheet" href="assets/css/walk-run.css">
 	<link rel="apple-touch-icon" sizes="57x57" href="assets/icons/apple-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="assets/icons/apple-icon-60x60.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="assets/icons/apple-icon-72x72.png">
@@ -34,11 +35,13 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 	<script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.4.1.min.js"></script>
 	<script src="https://raw.github.com/nene/jintervals/master/jintervals.js"></script>
+	<script type="text/javascript" src="assets/js/easytimer.min.js"></script>
 	<script type="text/javascript" src="assets/js/walk-run.js"></script>
 	<script type="text/javascript" src="assets/js/authentication.js"></script>
 	<script type="text/javascript" src="assets/js/index.js"></script>
 	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIV0dAOGRq72ZQ9OeuRHSMblRj1-noF2g&callback=initMap"></script>
 </head>
+<!------------------------------------ Check-in Modal [STOP]----------------------------------------->
 <div class="modal" id="checkInModal">
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
@@ -54,7 +57,32 @@
 		</div>
 	</div>
 </div>
+<!------------------------------------ Check-in Modal [STOP]----------------------------------------->
 
+<!------------------------------------ Stop Warning Modal [START]----------------------------------------->
+<!-- Modal -->
+<div class="modal fade" id="timerModal" tabindex="-1" role="dialog" aria-labelledby="stopWarning"
+	 aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<!--<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>-->
+				<div class="modal-body p-5 align-center">
+					<h4>Are you sure you want to stop?</h4><br>
+						<button id="modal_Yes" type="button" class="btn btn-primary ">Yes</button>
+						<button id="modal_No" type="button" class="btn btn-primary ">No</button>
+
+				</div>
+			<!--<div class="modal-footer py-5 pr-3 ">
+
+			</div>-->
+		</div>
+	</div>
+</div>
+<!------------------------------------ Stop Warning Modal  [STOP]----------------------------------------->
 <body>
 	<div class="container-fluid">
 		<div class="row align-items-center justify-content-center" id="lnavMenu">
@@ -106,15 +134,16 @@
 				</nav>
 			</div>
 		</div>
-		<div class="row justify-content-around mt-3	mt-md-1 justify-content-md-start" style="line-height: 5px">
+		<!-- TIMER STATS [START]------------------------------->
+
+		<div class="row justify-content-around justify-content-md-start mt-4 mt-md-1" style="line-height: 5px">
 			<div class="col-2 d-none d-md-block"></div>
-			<div class="col-2 text-center">
-				<h4 class="timer">00:00</h4>
-				<br>
+			<div id="txt_Timer"  class="col-2 text-center">
+				<div class ="timerValues"><h4 class="timer">00:00:00</h4></div><br>
 				<span>Time</span>
 			</div>
 			<div class="col-2 text-center">
-				<h4 id="distanceOutput">00.00</h4>
+				<h4 id="distanceOutput">0.00</h4>
 				<br>
 				<span>miles</span>
 			</div>
@@ -128,9 +157,12 @@
 			<div id="map" class="col-md-6">
 			</div>
 			<div class="row justify-content-center">
-				<div class="col-12 col-md-6 px-0 px-md-1 d-flex d-md-block flex-row justify-content-between justify-content-md-start flex-md-row">
-					<button id="start" class="btn btn-custom px-5 mr-3 mr-md-1 mt-5" type="submit">Start</button>
-					<button id="stop" class="btn btn-custom px-5 ml-3 ml-md-1 mt-5" type="submit">Stop</button>
+				<div id="startStopPauseButtonGroup" class="col-12 col-md-6 px-0 px-md-1 d-flex d-md-block flex-row justify-content-between justify-content-md-start">
+					<div class="col-6">
+						<button id="startButton" class="btn btn-custom px-5 mt-3 " data-status="btn-start-initial"
+							type="submit">Start
+						</button>
+					</div>
 				</div>
 				<div id="output">
 				</div>
@@ -139,9 +171,9 @@
 				<div id="totalDistance">
 				</div>
 			</div>
+			<!-- START/STOP BUTTONS [END] --------------------------------------->
 		</div>
 	</div>
-
 </body>
 
 </html>

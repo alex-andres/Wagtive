@@ -1,3 +1,4 @@
+console.log("walk-run.js is loaded!");
 var map, infoWindow;
 var marker;
 var path = "";
@@ -14,12 +15,18 @@ var lng2 = 0;
 
 function initMap() {
 	map = new google.maps.Map(document.getElementById('map'), {
+		//center: { lat: 34, lng: -118 },
 		center: { lat: 34.052235, lng: -118.243683 },
 		zoom: 13
 	});
 	infoWindow = new google.maps.InfoWindow;
 
 	function setMarkerPosition(marker, position) {
+		var pos = {
+			lat: position.coords.latitude,
+			lng: position.coords.longitude
+		};
+		map.setCenter(pos);
 		marker.setPosition(
 			new google.maps.LatLng(
 				position.coords.latitude,
@@ -100,27 +107,106 @@ function initMap() {
     strokeWeight: 2
   });
 
-	$("#start").on("click", function(e) {
-		e.preventDefault();
-		var sec1 = 0;
-		var sec2 = 0;
-		var min = 0;
-		var timer = setInterval(function(){
-			sec1++;
-			if (sec1 < 10) {
-				$(".timer").html(`0${min}:${sec2}${sec1}`);
+// -------------- Timer code [START] ---------------------------------
+
+		var timer = new Timer();
+		$('#startButton').click(function () {
+
+			var state = $(this).attr("data-status");
+			//Start the time from the initial state.
+			if(state == 'btn-start-initial' ){
+				//set the data status to start
+				//Change start button to pause
+				//Start the timer
+				//start google maps
+				//Add pause button
+				$('#startButton').text('Pause').addClass('pauseButton');
+				$('#startStopPauseButtonGroup').append(
+					"<div class='col-6'><button id='stopButton' class='btn btn-custom mt-3 mt-md-2' data-status='btn-stop-initial'" +
+					" data-target='#timerModal' data-toggle='modal' submit'>Stop</button></div>");
+
+				timer.start();
+				googleMaps();
+				$(this).attr("data-status",'btn-pause-start');
+				//Stop button modal
+				$('#stopButton').click(function () {
+					timer.pause();
+				}).addClass('stopButton');
+
 			}
-			else if (sec1 === 10) {
-				sec2++;
-				sec1 = 0;
-				if (sec2 < 6) {$(".timer").html(`0${min}:${sec2}${sec1}`)}
-				else if (sec2 >= 6) {
-					sec2 = 0;
-					min++;
-					$(".timer").html(`0${min}:${sec2}${sec1}`)
-				}
+			//Pausing time in the start state
+			if(state == 'btn-pause-start') {
+				$('#startButton').text('Start').removeClass('pauseButton').addClass('startButton');
+				timer.pause();
+				$(this).attr("data-status", 'btn-start-pause');
 			}
-		}, 1000);
+
+			//Restarting from pause state
+			if(state == 'btn-start-pause'){
+				timer.start(); //Without start google maps
+				$('#startButton').text('Pause').addClass('pauseButton').removeClass('startButton');
+				//set the data status to stop
+				//Start the timer
+				$(this).attr("data-status",'btn-pause-start');
+
+			}
+			//Resume the time
+			if(state == 'pause'){
+				console.log("Data status is: " , state);
+			}
+		});
+
+		$('#stopButton').click(function () {
+			console.log("you clicked the stop button!");
+			timer.stop();
+		});
+
+		timer.addEventListener('secondsUpdated', function (e) {
+			$('#txt_Timer .timerValues').html("<h4 class='timer'>" + timer.getTimeValues().toString() + "</h4>");
+		});
+		timer.addEventListener('started', function (e) {
+			$('#txt_Timer .timerValues').html("<h4 class='timer'>" + timer.getTimeValues().toString() + "</h4>");
+		});
+		timer.addEventListener('reset', function (e) {
+			$('#txt_Timer .timerValues').html("<h4 class='timer'>" + timer.getTimeValues().toString() + "</h4>");
+		});
+		//------------------------------------Modals [START]------------------------------------
+		$('#modal_Yes').click(function(){
+			//Save the times and store in database.
+			$('#timerModal').modal('hide');
+			location.reload();
+			//resetTimer();
+			timer.stop();
+		});
+		$('#modal_No').click(function(){
+			$('#timerModal').modal('hide');
+			timer.start();
+		});
+		//------------------------------------Modals [STOP]------------------------------------
+
+		/*timer.addEventListener('targetAchieved', function (e) {
+		 console.log("THE EVENT IS COMPLETE!!!!!!!");
+		 });*/
+
+		function resetTimer(){
+			$('#txt_Timer .timerValues').html('<h4 class="timer">00:00:00</h4>');
+			$('#startButton').attr('data-status', 'btn-start-initial').text();
+			$('#startButton').text('Start').removeClass('pauseButton').addClass('startButton');
+
+
+		}
+	// -------------- Timer code [STOP]---------------------------------
+
+
+	//-------------- Google Map code [START] ---------------------------
+	function googleMaps(){
+    var width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    if (width <= 414) {
+        var zoom = 17;
+    } else {
+        var zoom = 13;
+    };
+
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(function(position) {
 				var pos = {
@@ -128,7 +214,7 @@ function initMap() {
 					lng: position.coords.longitude
 				};
 				map.setCenter(pos);
-				map.setZoom(14);
+				map.setZoom(zoom);
 				var options = {
 					enableHighAccuracy: true,
 					timeout: Infinity,
@@ -147,12 +233,9 @@ function initMap() {
 			// Browser doesn't support Geolocation
 			handleLocationError(true, infoWindow, map.getCenter());
 		}
-	});
 
-	$("#stop").on("click", function(e) {
-		e.preventDefault();
-		trackBol = true;
-	});
+	}
+	//-------------- Google Map code [STOP] ---------------------------
 
 
 
