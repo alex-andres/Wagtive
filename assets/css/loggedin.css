@@ -98,10 +98,6 @@ h4 {
     font-size: 13px;
 }
 
-.dropdown-item {
-    /*	color: #868e96;*/
-}
-
 .dropdown-item:hover {
     color: white;
     background-color: #aaa;
@@ -117,7 +113,6 @@ h4 {
 }
 
 #stats {
-    /*	color: #868e96;*/
     font-size: 13px;
 }
 
@@ -201,4 +196,11 @@ h4 {
 }
 
 @media handheld,
-screen and (max-width: 736px) {}
+screen and (max-width: 736px) {
+    .nav-link {
+        font-size: 14px
+    }
+    .manuallHide {
+        display: none
+    }
+}
