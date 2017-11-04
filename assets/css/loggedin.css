@@ -206,7 +206,7 @@ h4 {
 }
 
 @media handheld,
-screen and (max-width: 414px) {
+screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
     #recent-checkins {
         width: 95vw;
         height: 95vw;

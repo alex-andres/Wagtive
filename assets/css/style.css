@@ -106,7 +106,7 @@ input {
 }
 
 @media handheld,
-screen and (max-width: 414px) {
+screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
     body {
         background-size: cover;
         background-repeat: no-repeat;
