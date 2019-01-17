@@ -11,6 +11,7 @@ var lat1 = 0;
 var lng1 = 0;
 var lat2 = 0;
 var lng2 = 0;
+var timer;
 
 function initMap() {
 	map = new google.maps.Map(document.getElementById('map'), {
@@ -105,7 +106,7 @@ function initMap() {
 		var sec1 = 0;
 		var sec2 = 0;
 		var min = 0;
-		var timer = setInterval(function(){
+		timer = setInterval(function(){
 			sec1++;
 			if (sec1 < 10) {
 				$(".timer").html(`0${min}:${sec2}${sec1}`);
@@ -151,6 +152,7 @@ function initMap() {
 
 	$("#stop").on("click", function(e) {
 		e.preventDefault();
+		clearInterval(timer)
 		trackBol = true;
 	});
 

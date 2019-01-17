@@ -3,9 +3,9 @@ var map;
 function initMap() {
     var width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
     if (width <= 414) {
-        var zoom = 13;
+        var zoom = 11;
     } else {
-        var zoom = 15;
+        var zoom = 13;
     }
     console.log(width)
     map = new google.maps.Map(document.getElementById('recent-checkins'), {

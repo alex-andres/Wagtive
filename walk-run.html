@@ -37,23 +37,9 @@
 	<script type="text/javascript" src="assets/js/walk-run.js"></script>
 	<script type="text/javascript" src="assets/js/authentication.js"></script>
 	<script type="text/javascript" src="assets/js/index.js"></script>
-	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIV0dAOGRq72ZQ9OeuRHSMblRj1-noF2g&callback=initMap"></script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDr1aKlDC8EUtbk5Pp1j84-iRIEr6sHt9A&callback=initMap">
+	</script>
 </head>
-<div class="modal" id="checkInModal">
-	<div class="modal-dialog modal-lg" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<span>Check in</span>
-				<small>Each check in is worth 100 ponts</small>
-			</div>
-			<div class="modal-body" id="check-ins-modal">
-			</div>
-			<div class="modal-footer">
-				<h5></h5>
-			</div>
-		</div>
-	</div>
-</div>
 
 <body>
 	<div class="container-fluid">
@@ -66,7 +52,7 @@
 					<div class="col-12 col-md-8">
 						<ul class="nav nav-pills justify-content-around">
 							<li class="nav-item">
-								<a class="nav-link" href="#">Home</a>
+								<a class="nav-link" href="home.html">Home</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="leaderboard.html">Leaderboard</a>
@@ -77,14 +63,7 @@
 								</a>
 								<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 									<a class="dropdown-item" href="walk-run.html">Walking/Running</a>
-									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="#">Meet-ups</a>
-									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="#">Challenges</a>
 								</div>
-							</li>
-							<li class="nav-item d-none d-md-block">
-								<a id="checkInButton" class="nav-link checkInButton" href="#" data-toggle="modal" data-target="#checkInModal">Check in</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="profile.html">Profile</a>

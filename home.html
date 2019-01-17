@@ -38,28 +38,9 @@
     <script type="text/javascript" src="assets/js/home.js"></script>
     <script type="text/javascript" src="assets/js/LoadingBar/LoadingBar.js"></script>
     <script type="text/javascript" src="assets/js/check-ins.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIV0dAOGRq72ZQ9OeuRHSMblRj1-noF2g&callback=initMap"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDr1aKlDC8EUtbk5Pp1j84-iRIEr6sHt9A&callback=initMap">
+    </script>
 </head>
-<div class="modal" id="checkInModal">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <span>Check in</span>
-                <small>Each check in is worth 100 ponts</small>
-            </div>
-            <div class="modal-body" id="check-ins-modal">
-                <div class="row justify-content-center">
-                    <div class="col-2">
-                        <img style="height: 100%" src="assets/images/loading.gif">
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button id="modal-close" type="button" class="btn btn-outline-danger mr-4 d-md-none" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
 </div>
 </div>
 
@@ -85,14 +66,7 @@
 								</a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                     <a class="dropdown-item" href="walk-run.html">Walking/Running</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Meet-ups</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Challenges</a>
                                 </div>
-                            </li>
-                            <li class="nav-item d-none d-md-block">
-                                <a id="checkInButton" class="nav-link checkInButton" href="#" data-toggle="modal" data-target="#checkInModal">Check in</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="profile.html">Profile</a>
